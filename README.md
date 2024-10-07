@@ -4,15 +4,16 @@
 4. 💞️ I'm looking to collaborate on improving and optimizing backtrader, rewriting its code in C++ and providing a Python interface.
 5. 📫 Email: yunjinqi@gmail.com
 6. 👋 my projects:
+    
+     - [ ] [empyrical_cpp](https://github.com/cloudQuant/empyrical_cpp.git) rewrite the empyrical using cpp
+     - [ ] [pyfolio_cpp](https://github.com/cloudQuant/pyfolio_cpp) rewrite the pyfolio using cpp
+     - [ ] [little_cpp_project](https://github.com/cloudQuant/cpp_little_project) some learning homework and little project by cpp
+     - [ ] [little_python_project](https://github.com/cloudQuant/python_little_project) some learning homework and little project by python
      - [ ] [backtrader_cpp](https://github.com/cloudQuant/backtrader_cpp.git) now-not-open-source, rewrite backtrader in cpp
      - [ ] [btcpp](https://github.com/cloudQuant/btcpp) now-not-open-source, high-frequency trading platform written by cpp
      - [ ] [btpy](https://gitee.com/yunjinqi/btpy.git) now-not-open-source, high-frequency market making and arbitrage trading platform
-     - [ ] [pyfolio_cpp](https://github.com/cloudQuant/pyfolio_cpp) rewrite the pyfolio using cpp
-     - [ ] [empyrical_cpp](https://github.com/cloudQuant/empyrical_cpp.git) rewrite the empyrical using cpp
-     - [ ] [little_cpp_project](https://github.com/cloudQuant/cpp_little_project) some learning homework and little project by cpp
-     - [ ] [little_python_project](https://github.com/cloudQuant/python_little_project) some learning homework and little project by python
      - [ ] [wondertrader_demos](https://github.com/cloudQuant/wondertrader_demos) now-not-open-source, some example using wondertrader
-7. 👋 I have completed many online courses and obtained many certifications
+8. 👋 I have completed many online courses and obtained many certifications
     - - [x]  2024-10-02 [【快班】区块链技术从入门到精通](http://www.dataguru.cn/cert/8/certpic_uid_267568_lesson_247_certtype_3_1727843512.jpg)
     - - [x]  2024-10-02 [【快班】Qt编程快速入门](http://www.dataguru.cn/cert/8/certpic_uid_267568_lesson_231_certtype_3_1727843557.jpg)
     - - [x]  2024-09-27 [Deep Neural Networks with PyTorch](https://www.coursera.org/account/accomplishments/verify/0AHVO57G4GJX)
