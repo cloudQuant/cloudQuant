@@ -13,6 +13,8 @@
      - [ ] [btcpp](https://github.com/cloudQuant/btcpp) now-not-open-source, high-frequency trading platform written by cpp
      - [ ] [btpy](https://gitee.com/yunjinqi/btpy.git) now-not-open-source, high-frequency market making and arbitrage trading platform
      - [ ] [wondertrader_demos](https://github.com/cloudQuant/wondertrader_demos) now-not-open-source, some example using wondertrader
+  
+<!--
 8. 👋 I have completed many online courses and obtained many certifications
     - - [x]  2024-10-02 [【快班】区块链技术从入门到精通](http://www.dataguru.cn/cert/8/certpic_uid_267568_lesson_247_certtype_3_1727843512.jpg)
     - - [x]  2024-10-02 [【快班】Qt编程快速入门](http://www.dataguru.cn/cert/8/certpic_uid_267568_lesson_231_certtype_3_1727843557.jpg)
@@ -42,6 +44,6 @@
     - - [x]  2015-09-14 [深度玩转Excel（第三期）](http://www.dataguru.cn/cert.php?lessonid=372&uid=267568)
     - - [x]  2015-08-17  [量化投资（第四期）](http://www.dataguru.cn/cert.php?lessonid=348&uid=267568)
     - - [x]  2014-03-01 [CIIA](https://ciia.sac.net.cn/ciia2019/showGrbks/querygrbksinfo.htm)
-   
 
+-->
 
