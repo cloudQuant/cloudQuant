@@ -4,7 +4,8 @@
 4. 💞️ I'm looking to collaborate on improving and optimizing backtrader, rewriting its code in C++ and providing a Python interface.
 5. 📫 Email: yunjinqi@gmail.com
 6. 👋 my projects:
-    
+
+     - [ ] [woniunote](https://github.com/cloudQuant/woniunote) a personal website and blog written by python, flask, html, css, js
      - [ ] [empyrical_cpp](https://github.com/cloudQuant/empyrical_cpp.git) rewrite the empyrical using cpp
      - [ ] [pyfolio_cpp](https://github.com/cloudQuant/pyfolio_cpp) rewrite the pyfolio using cpp
      - [ ] [little_cpp_project](https://github.com/cloudQuant/cpp_little_project) some learning homework and little project by cpp
