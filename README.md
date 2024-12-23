@@ -8,6 +8,7 @@
      - [ ] [woniunote](https://github.com/cloudQuant/woniunote) a personal website and blog written by python, flask, html, css, js
      - [ ] [backtrader](https://github.com/cloudQuant/backtrader) python quantitative trading system, comes from mementum/backtrader
      - [ ] [pyfolio](https://github.com/cloudQuant/pyfolio) is a Python library for financial data analysis and portfolio performance evaluation
+     - [ ] [alphalens](https://github.com/cloudQuant/alphalens) python factor and alpha analysis 
      - [ ] [empyrical_cpp](https://github.com/cloudQuant/empyrical_cpp.git) rewrite the empyrical using cpp
      - [ ] [pyfolio_cpp](https://github.com/cloudQuant/pyfolio_cpp) rewrite the pyfolio using cpp
      - [ ] [little_cpp_project](https://github.com/cloudQuant/cpp_little_project) some learning homework and little project by cpp
