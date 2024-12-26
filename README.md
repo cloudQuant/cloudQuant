@@ -6,6 +6,7 @@
 6. 👋 my projects:
 
      - [ ] [woniunote](https://github.com/cloudQuant/woniunote) a personal website and blog written by python, flask, html, css, js
+     - [ ] [bt_api_py](https://github.com/cloudQuant/bt_api_py) python api of binance and okx
      - [ ] [backtrader](https://github.com/cloudQuant/backtrader) python quantitative trading system, comes from mementum/backtrader
      - [ ] [pyfolio](https://github.com/cloudQuant/pyfolio) is a Python library for financial data analysis and portfolio performance evaluation
      - [ ] [alphalens](https://github.com/cloudQuant/alphalens) python factor and alpha analysis 
