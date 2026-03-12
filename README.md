@@ -1,55 +1,73 @@
-1.  👋 Hi, I'm @cloud，Quant\MFIn\CIIA\CFP\FRM\CFA
-2. 👀 I'm interested in Algorithmic trading, trading strategies, Python, C++ programming, high-performance computing, machine learning, deep learning
-3. 🌱 I'm currently learning c++23, pybind11, wondertrader and dolphindb, and implement arbitragy strategy.
-4. 💞️ I'm looking to collaborate on improving and optimizing backtrader, rewriting its code in C++ and providing a Python interface.
-5. 📫 Email: yunjinqi@gmail.com
-6. 👋 my projects:
+# Hi, I'm `cloudQuant`
 
-     - [ ] [bt_api_py](https://github.com/cloudQuant/bt_api_py) python api of binance and okx
-     - [ ] [woniunote](https://github.com/cloudQuant/woniunote) a personal website and blog written by python, flask, html, css, js
-     - [ ] [empyrical](https://github.com/cloudQuant/empyrical) Common financial risk and performance metrics. Used by zipline and pyfolio.
-     - [ ] [pyfolio](https://github.com/cloudQuant/pyfolio) is a Python library for financial data analysis and portfolio performance evaluation
-     - [ ] [alphalens](https://github.com/cloudQuant/alphalens) python factor and alpha analysis 
-     - [ ] [backtrader](https://github.com/cloudQuant/backtrader) python quantitative trading system, comes from mementum/backtrader
-     - [ ] [little_python_project](https://github.com/cloudQuant/python_little_project) some learning homework and little project by python
-     - [ ] [empyrical_cpp](https://github.com/cloudQuant/empyrical_cpp.git) rewrite the empyrical using cpp
-     - [ ] [pyfolio_cpp](https://github.com/cloudQuant/pyfolio_cpp) rewrite the pyfolio using cpp
-     - [ ] [little_cpp_project](https://github.com/cloudQuant/cpp_little_project) some learning homework and little project by cpp
-     - [ ] [backtrader_cpp](https://github.com/cloudQuant/backtrader_cpp.git) now-not-open-source, rewrite backtrader in cpp
-     - [ ] [btcpp](https://github.com/cloudQuant/btcpp) now-not-open-source, high-frequency trading platform written by cpp
-     - [ ] [btpy](https://gitee.com/yunjinqi/btpy.git) now-not-open-source, high-frequency market making and arbitrage trading platform
-     - [ ] [wondertrader_demos](https://github.com/cloudQuant/wondertrader_demos) now-not-open-source, some example using wondertrader
-  
-<!--
-8. 👋 I have completed many online courses and obtained many certifications
-    - - [x]  2024-10-02 [【快班】区块链技术从入门到精通](http://www.dataguru.cn/cert/8/certpic_uid_267568_lesson_247_certtype_3_1727843512.jpg)
-    - - [x]  2024-10-02 [【快班】Qt编程快速入门](http://www.dataguru.cn/cert/8/certpic_uid_267568_lesson_231_certtype_3_1727843557.jpg)
-    - - [x]  2024-09-27 [Deep Neural Networks with PyTorch](https://www.coursera.org/account/accomplishments/verify/0AHVO57G4GJX)
-    - - [x]  2024-09-24 [Introduction to Computer Vision and Image Processing](https://www.coursera.org/account/accomplishments/verify/GYYWKZHTCZBY)
-    - - [x]  2024-09-21 [Introduction to Deep Learning & Neural Networks with Keras](https://www.coursera.org/account/accomplishments/verify/LWXBXPUGVTWA)
-    - - [x]  2024-09-19 [Databases and SQL for Data Science with Python](https://www.coursera.org/account/accomplishments/verify/IK218NGEGUYK)
-    - - [x]  2024-09-16  [Accelerated Computer Science Fundamentals Specialization](https://coursera.org/share/7027c9eaa094b85d7f663688de449129)
-    - - [x]  2024-09-06  [Machine Learning for Trading Specialization](https://www.coursera.org/account/accomplishments/specialization/RNFCA5DF7F7P) 
-    - - [x]  2023-11-20  [股票投资高手武器系列之缠论系统（第23期）](http://www.dataguru.cn/cert.php?lessonid=3067&uid=267568)
-    - - [x]  2023-08-14  [Python机器学习（第20期）](http://www.dataguru.cn/cert.php?lessonid=3079&uid=267568)
-    - - [x]  2023-06-01  [CFA](https://basno.com/bag89tvj)
-    - - [x]  2019-09-01  [FRM](https://my.garp.org/DigitalBadgeFRM?id=0034000001tLi4lAAC)
-    - - [x]  2019-08-19  [黄金Quant工——量化金融分析师入门（第一期）](http://www.dataguru.cn/cert.php?lessonid=1896&uid=267568)
-    - - [x]  2018-09-03  [python网络爬虫应用实战（第一期）](http://www.dataguru.cn/cert.php?lessonid=1552&uid=267568)
-    - - [x]  2018-08-20  [基于案例学习时间序列分析（第四期）](http://www.dataguru.cn/cert.php?lessonid=1546&uid=267568)
-    - - [x]  2018-08-13  [金融的人工智能革命（第四期）](http://www.dataguru.cn/cert.php?lessonid=1544&uid=267568)
-    - - [x]  2018-06-01  [CFP]()
-    - - [x]  2018-04-28  [突击pyspark：数据挖掘的力量倍增器（第二期）](http://www.dataguru.cn/cert.php?lessonid=1429&uid=267568)
-    - - [x]  2017-06-19  [Python自然语言分析（第三期）](http://www.dataguru.cn/cert.php?lessonid=1054&uid=267568)
-    - - [x]  2017-04-03  [python魔鬼训练营（第四期）](http://www.dataguru.cn/cert.php?lessonid=957&uid=267568)
-    - - [x]  2017-03-25  [Python数据分析（第五期）](http://www.dataguru.cn/cert.php?lessonid=930&uid=267568)
-    - - [x]  2017-03-04  [Python突击—从入门到精通到项目实战（第三期)](http://www.dataguru.cn/cert.php?lessonid=929&uid=267568)
-    - - [x]  2016-08-27  [R语言数据分析、展现与实例（第21期）](http://www.dataguru.cn/cert.php?lessonid=715&uid=267568)
-    - - [x]  2016-03-21  [老板说服术之玩转数据展示（第一期）](http://www.dataguru.cn/cert.php?lessonid=563&uid=267568)
-    - - [x]  2015-10-10 [SPSS数据分析入门与提高（第二期）](http://www.dataguru.cn/cert.php?lessonid=398&uid=267568)
-    - - [x]  2015-09-14 [深度玩转Excel（第三期）](http://www.dataguru.cn/cert.php?lessonid=372&uid=267568)
-    - - [x]  2015-08-17  [量化投资（第四期）](http://www.dataguru.cn/cert.php?lessonid=348&uid=267568)
-    - - [x]  2014-03-01 [CIIA](https://ciia.sac.net.cn/ciia2019/showGrbks/querygrbksinfo.htm)
+Quant developer focused on algorithmic trading systems, research tooling, broker and exchange integration, and performance-oriented engineering across Python, C++, Rust, and TypeScript.
 
--->
+## About Me
 
+- Quant credentials: `CFA`, `FRM`, `CIIA`, `CFP`
+- Main interests:
+  - Algorithmic trading
+  - Backtesting and strategy engineering
+  - Portfolio and factor analytics
+  - High-performance systems
+  - AI-assisted research and developer tooling
+
+## What I've Been Working On Recently
+
+Over the last two years, my GitHub work has concentrated on quantitative trading infrastructure, analytics libraries, and end-to-end trading platforms.
+
+Recent active contribution areas include:
+
+- `backtrader` — framework maintenance, CI/CD, compatibility, and documentation
+- `bt_api_py` — multi-exchange standardized API SDK
+- `backtrader_web` — web-based strategy management and execution workflow
+- `fincore` — unified quantitative finance toolkit
+- `akshare_web` — market data and workflow tooling
+- `pymt5` — MT5 Web Terminal API client for Python
+- `alphalens` — factor and alpha research workflows
+- `pyfolio` — portfolio analytics and performance evaluation
+
+## Current Focus
+
+- Building production-friendly Python SDKs for quant workflows
+- Improving cross-platform reliability and CI/CD for trading libraries
+- Exploring C++ / Rust acceleration paths for quant infrastructure
+- Connecting research, backtesting, live trading, and data tooling into a unified workflow
+- Making quant systems easier to use with MCP / AI-native interfaces
+
+## Selected Projects
+
+### Trading Frameworks and Infrastructure
+
+- [`backtrader`](https://github.com/cloudQuant/backtrader) — quantitative trading framework for backtesting and live trading
+- [`backtrader_web`](https://github.com/cloudQuant/backtrader_web) — web-based full-cycle Backtrader strategy management tool
+- [`bt_api_py`](https://github.com/cloudQuant/bt_api_py) — Python SDK for multi-exchange integration with a standardized API
+- [`pymt5`](https://github.com/cloudQuant/pymt5) — Python client for the MT5 Web Terminal
+- [`fincore`](https://github.com/cloudQuant/fincore) — unified toolkit for financial metrics, analytics, and quant workflows
+
+### Research and Analytics
+
+- [`alphalens`](https://github.com/cloudQuant/alphalens) — factor and alpha analysis
+- [`pyfolio`](https://github.com/cloudQuant/pyfolio) — portfolio and risk analytics
+- [`empyrical`](https://github.com/cloudQuant/empyrical) — financial performance metrics
+
+### Data, APIs, and Ecosystem Tooling
+
+- [`akshare_web`](https://github.com/cloudQuant/akshare_web) — Akshare workflow and management tooling
+- [`ctp-python`](https://github.com/cloudQuant/ctp-python) — Python CTP futures interface
+- [`openclaw`](https://github.com/cloudQuant/openclaw) — AI assistant tooling
+
+## Technical Interests
+
+- Python quant libraries
+- C++ strategy engines and bindings
+- Rust for performance-critical systems
+- Exchange and broker API integration
+- Factor research and portfolio analytics
+- Cross-platform automation and release engineering
+
+## Contact
+
+- Email: `yunjinqi@gmail.com`
+
+If you're building something around quant research, trading systems, analytics infrastructure, or broker/exchange connectivity, feel free to reach out.
