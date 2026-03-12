@@ -1,6 +1,8 @@
 # Hi, I'm `cloudQuant`
 
-[English](#english-version) | [中文](#中文版本)
+<a id="english-version" name="english-version"></a>
+
+[English](#english-version) | [中文](#chinese-version)
 
 ## English Version
 
@@ -11,6 +13,7 @@ Quant focused on algorithmic trading systems, research tooling, broker and excha
 - Quant credentials: `CFA`, `FRM`, `CIIA`, `CFP`
 - Main interests:
   - Algorithmic trading
+  - Trading strategies and strategy research
   - Backtesting and strategy engineering
   - Portfolio and factor analytics
   - High-performance systems
@@ -35,9 +38,23 @@ Recent active contribution areas include:
 
 - Building production-friendly Python SDKs for quant workflows
 - Improving cross-platform reliability and CI/CD for trading libraries
+- Researching and refining trading strategies across multiple market styles
 - Exploring C++ / Rust acceleration paths for quant infrastructure
 - Connecting research, backtesting, live trading, and data tooling into a unified workflow
 - Making quant systems easier to use with MCP / AI-native interfaces
+
+## Strategy Interests
+
+- Trend following
+- Mean reversion
+- Momentum
+- Breakout strategies
+- Multi-factor stock selection
+- Statistical arbitrage
+- Market making
+- Arbitrage and spread trading
+- Event-driven strategies
+- High-frequency trading research
 
 ## Selected Projects
 
@@ -74,10 +91,11 @@ Recent active contribution areas include:
 
 - Email: `yunjinqi@gmail.com`
 
-If you're building something around quant research, trading systems, analytics infrastructure, or broker/exchange connectivity, feel free to reach out.
+If you're building something around quant research, trading systems, analytics infrastructure, broker/exchange connectivity, or trading strategies, feel free to reach out.
 
-<details>
-<summary><strong>中文版本</strong></summary>
+---
+
+<a id="chinese-version" name="chinese-version"></a>
 
 ## 中文版本
 
@@ -88,6 +106,7 @@ If you're building something around quant research, trading systems, analytics i
 - 量化相关资质：`CFA`、`FRM`、`CIIA`、`CFP`
 - 主要兴趣方向：
   - 算法交易
+  - 交易策略与策略研究
   - 回测系统与策略工程
   - 组合分析与因子研究
   - 高性能系统
@@ -112,9 +131,23 @@ If you're building something around quant research, trading systems, analytics i
 
 - 构建更适合生产环境的 Python 量化 SDK
 - 提升交易类库的跨平台可靠性与 CI/CD 质量
+- 研究和优化不同风格的交易策略
 - 探索 C++ / Rust 在量化基础设施中的加速路径
 - 打通研究、回测、实盘执行和数据工具之间的完整工作流
 - 让量化系统更容易与 MCP / AI 原生接口结合
+
+## 感兴趣的策略方向
+
+- 趋势跟踪
+- 均值回归
+- 动量策略
+- 突破策略
+- 多因子选股
+- 统计套利
+- 做市策略
+- 套利与价差交易
+- 事件驱动策略
+- 高频交易研究
 
 ## 代表项目
 
@@ -151,6 +184,4 @@ If you're building something around quant research, trading systems, analytics i
 
 - Email: `yunjinqi@gmail.com`
 
-如果你正在做量化研究、交易系统、分析基础设施，或者券商 / 交易所接口相关项目，欢迎交流。
-
-</details>
+如果你正在做量化研究、交易系统、分析基础设施、券商 / 交易所接口，或者交易策略相关项目，欢迎交流。
