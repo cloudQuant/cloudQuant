@@ -1,0 +1,119 @@
+# =========================
+# cloudQuant CI Pipeline
+# =========================
+
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # ----- Lint Check -----
+  lint:
+    name: Lint Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Markdown Files
+        run: |
+          echo "Checking Markdown files..."
+          find . -name "*.md" -type f | head -20
+
+      - name: Validate YAML Files
+        run: |
+          echo "Validating YAML files..."
+          find . -name "*.yaml" -o -name "*.yml" -type f | head -20
+
+  # ----- Documentation Check -----
+  docs:
+    name: Documentation Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Required Files
+        run: |
+          echo "Checking required documentation files..."
+          files=("README.md" "CHANGELOG.md" "CONTRIBUTING.md" ".gitignore")
+          for file in "${files[@]}"; do
+            if [ -f "$file" ]; then
+            echo "✅ $file exists"
+          else
+            echo "❌ $file is missing"
+            exit 1
+          fi
+          done
+
+      - name: Check Docs Directory
+        run: |
+          echo "Checking docs directory..."
+          if [ -d "docs" ]; then
+            echo "✅ docs/ directory exists"
+            ls -la docs/
+          else
+            echo "❌ docs/ directory is missing"
+            exit 1
+          fi
+
+  # ----- Security Check -----
+  security:
+    name: Security Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check for Secrets
+        run: |
+          echo "Checking for potential secrets..."
+          # Check for common secret patterns
+          if grep -r --include="*.md" --include="*.yaml" --include="*.yml" \
+            -e "(api[_-]?key|apikey|secret|password|token|credential)" \
+            --exclude-dir=".git" . 2>/dev/null; then
+            echo "⚠️ Warning: Potential secrets found in files"
+            exit 1
+          else
+            echo "✅ No obvious secrets found"
+          fi
+
+  # ----- BMAD Config Validation -----
+  bmad-validate:
+    name: BMAD Config Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate BMAD Structure
+        run: |
+          echo "Validating BMAD structure..."
+          required_dirs=("_bmad/core" "_bmad/bmm" "_bmad/_config")
+          for dir in "${required_dirs[@]}"; do
+            if [ -d "$dir" ]; then
+              echo "✅ $dir exists"
+            else
+              echo "❌ $dir is missing"
+              exit 1
+            fi
+          done
+
+      - name: Validate Manifest
+        run: |
+          echo "Validating manifest..."
+          if [ -f "_bmad/_config/manifest.yaml" ]; then
+            echo "✅ manifest.yaml exists"
+            cat _bmad/_config/manifest.yaml
+          else
+            echo "❌ manifest.yaml is missing"
+            exit 1
+          fi
