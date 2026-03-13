@@ -47,7 +47,6 @@ spec_file: '' # set at runtime before leaving this step
    - **Plan-code-review** — everything else. `execution_mode = "plan-code-review"`. → Step 2.
    - When uncertain whether blast radius is truly zero, default to plan-code-review.
 
-
 ## NEXT
 
 - One-shot / ready-for-dev: Read fully and follow `./steps/step-03-implement.md`

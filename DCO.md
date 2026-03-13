@@ -14,7 +14,7 @@ By making a contribution to this project, I certify that:
 
 To indicate your agreement with the above, add a line like:
 
-```
+```text
 Signed-off-by: Your Name <your.email@example.com>
 ```
 

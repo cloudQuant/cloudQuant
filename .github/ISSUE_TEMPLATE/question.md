@@ -18,9 +18,9 @@ assignees: []
 
 提供任何相关的上下文信息。
 
-- BMAD Version: ___
-- Module: ___
-- IDE: ___
+- BMAD Version: \_\_\_
+- Module: \_\_\_
+- IDE: \_\_\_
 
 ## 📝 附加信息
 

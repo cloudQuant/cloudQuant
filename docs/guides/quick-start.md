@@ -23,7 +23,7 @@ cd cloudQuant
 
 ### 步骤 2: 了解目录结构
 
-```
+```text
 cloudQuant/
 ├── _bmad/           # BMAD 框架核心
 │   ├── core/       # 核心模块
@@ -40,12 +40,12 @@ cloudQuant/
 
 根据你使用的 IDE，配置文件位于:
 
-| IDE | 配置目录 |
-|-----|----------|
-| Claude Code | `.claude/` |
-| Cursor | `.cursor/` |
-| OpenCode | `.opencode/` |
-| Windsurf | `.windsurf/` |
+| IDE         | 配置目录     |
+| ----------- | ------------ |
+| Claude Code | `.claude/`   |
+| Cursor      | `.cursor/`   |
+| OpenCode    | `.opencode/` |
+| Windsurf    | `.windsurf/` |
 
 ### 步骤 4: 探索工作流
 
@@ -72,14 +72,17 @@ ls _bmad/bmm/workflows/
 ## ❓ 常见问题
 
 ### Q: BMAD 是什么?
+
 BMAD (Breakthrough Method for AI Development) 是一种 AI 辅助的开发方法论框架。
 
 ### Q: 我需要安装什么?
+
 只需要一个支持的 IDE，BMAD 配置已经包含在仓库中。
 
 ### Q: 如何贡献?
+
 请阅读 [贡献指南](../../CONTRIBUTING.md)。
 
 ---
 
-*最后更新: 2026-03-13*
+_最后更新: 2026-03-13_

@@ -5,6 +5,7 @@
 ---
 
 <a name="chinese"></a>
+
 ## 中文版本
 
 感谢您有兴趣为 cloudQuant 项目做出贡献！
@@ -12,12 +13,14 @@
 ### 🚀 快速开始
 
 1. **Fork 本仓库**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/cloudQuant.git
    cd cloudQuant
    ```
 
 2. **创建分支**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -27,12 +30,14 @@
    - 确保所有更改都有清晰的提交信息
 
 4. **提交更改**
+
    ```bash
    git add .
    git commit -m "feat: 添加新功能描述"
    ```
 
 5. **推送并创建 Pull Request**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -51,7 +56,7 @@
 
 ### 📂 项目结构
 
-```
+```text
 cloudQuant/
 ├── _bmad/              # BMAD 框架核心模块
 │   ├── core/           # 核心工作流和代理
@@ -83,12 +88,14 @@ cloudQuant/
 ### ❓ 获取帮助
 
 如有问题，请：
+
 - 创建 [Issue](https://github.com/cloudQuant/cloudQuant/issues)
 - 发送邮件至 yunjinqi@gmail.com
 
 ---
 
 <a name="english"></a>
+
 ## English Version
 
 Thank you for your interest in contributing to cloudQuant!
@@ -96,12 +103,14 @@ Thank you for your interest in contributing to cloudQuant!
 ### 🚀 Quick Start
 
 1. **Fork this repository**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/cloudQuant.git
    cd cloudQuant
    ```
 
 2. **Create a branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -111,12 +120,14 @@ Thank you for your interest in contributing to cloudQuant!
    - Ensure all changes have clear commit messages
 
 4. **Commit your changes**
+
    ```bash
    git add .
    git commit -m "feat: add new feature description"
    ```
 
 5. **Push and create a Pull Request**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -135,7 +146,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ### 📂 Project Structure
 
-```
+```text
 cloudQuant/
 ├── _bmad/              # BMAD framework core modules
 │   ├── core/           # Core workflows and agents
@@ -167,5 +178,6 @@ All PRs require review before merging. Please ensure:
 ### ❓ Getting Help
 
 If you have questions:
+
 - Create an [Issue](https://github.com/cloudQuant/cloudQuant/issues)
 - Email yunjinqi@gmail.com

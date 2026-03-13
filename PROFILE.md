@@ -1,7 +1,7 @@
 # cloudQuant BMAD Framework
 
 [![BMAD Version](https://img.shields.io/badge/BMAD-6.1.0-blue.svg)](https://github.com/bmad-code-org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](#license)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](#-license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 **AI-Powered Development Framework for Quantitative Trading Systems**
@@ -11,6 +11,7 @@
 ---
 
 <a name="english"></a>
+
 ## Overview
 
 cloudQuant is a BMAD (Breakthrough Method for AI Development) framework configuration repository designed for quantitative trading system development. This repository provides a structured, AI-assisted development methodology for building trading systems, research tools, and analytics infrastructure.
@@ -18,6 +19,7 @@ cloudQuant is a BMAD (Breakthrough Method for AI Development) framework configur
 ### What is BMAD?
 
 BMAD is a modular AI development framework that provides:
+
 - **Structured Workflows** - Step-by-step development processes
 - **AI Agent Integration** - Pre-configured AI agents for different tasks
 - **Multi-IDE Support** - Works with Claude Code, Cursor. OpenCode. Windsurf. and Codex
@@ -53,7 +55,7 @@ code .  # or cursor . or claude .
 
 ## 📁 Project Structure
 
-```
+```text
 cloudQuant/
 ├── .github/              # GitHub configurations (CI. templates)
 ├── _bmad/                # BMAD Framework Core
@@ -78,14 +80,14 @@ cloudQuant/
 
 ## 🧩 BMAD Modules
 
-| Module | Version | Description |
-|--------|---------|-------------|
-| **Core** | 6.1.0 | Core workflows and base agents |
-| **BMM** | 6.1.0 | Business methodology (PRD. architecture. epics) |
-| **CIS** | 0.1.8 | Creative intelligence (brainstorming. design thinking) |
-| **GDS** | 0.1.10 | Game development workflows |
-| **TEA** | 1.6.0 | Test engineering and automation |
-| **WDS** | 0.3.0 | Web design system and UI components |
+| Module   | Version | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| **Core** | 6.1.0   | Core workflows and base agents                         |
+| **BMM**  | 6.1.0   | Business methodology (PRD. architecture. epics)        |
+| **CIS**  | 0.1.8   | Creative intelligence (brainstorming. design thinking) |
+| **GDS**  | 0.1.10  | Game development workflows                             |
+| **TEA**  | 1.6.0   | Test engineering and automation                        |
+| **WDS**  | 0.3.0   | Web design system and UI components                    |
 
 ## 📚 Documentation
 
@@ -116,17 +118,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 cloudQuant maintains several quantitative trading related projects:
 
 ### Trading Frameworks
+
 - [backtrader](https://github.com/cloudQuant/backtrader) - Quantitative trading framework
 - [bt_api_py](https://github.com/cloudQuant/bt_api_py) - Multi-exchange API SDK
 - [backtrader_web](https://github.com/cloudQuant/backtrader_web) - Web-based strategy management
 - [fincore](https://github.com/cloudQuant/fincore) - Financial metrics toolkit
 
 ### Research & Analytics
+
 - [alphalens](https://github.com/cloudQuant/alphalens) - Factor analysis
 - [pyfolio](https://github.com/cloudQuant/pyfolio) - Portfolio analytics
 - [empyrical](https://github.com/cloudQuant/empyrical) - Performance metrics
 
 ### Data & APIs
+
 - [akshare_web](https://github.com/cloudQuant/akshare_web) - Market data tools
 - [ctp-python](https://github.com/cloudQuant/ctp-python) - CTP futures interface
 
@@ -138,6 +143,7 @@ cloudQuant maintains several quantitative trading related projects:
 ---
 
 <a name="中文"></a>
+
 ## 中文版
 
 ### 概述
@@ -154,23 +160,23 @@ cd cloudQuant
 
 ### 项目结构
 
-| 目录 | 说明 |
-|------|------|
-| `_bmad/` | BMAD 框架核心 |
-| `docs/` | 项目文档 |
-| `.github/` | GitHub 配置和 CI |
-| `design-artifacts/` | 设计相关产物 |
+| 目录                | 说明             |
+| ------------------- | ---------------- |
+| `_bmad/`            | BMAD 框架核心    |
+| `docs/`             | 项目文档         |
+| `.github/`          | GitHub 配置和 CI |
+| `design-artifacts/` | 设计相关产物     |
 
 ### BMAD 模块
 
-| 模块 | 版本 | 说明 |
-|------|------|------|
-| Core | 6.1.0 | 核心工作流和代理 |
-| BMM | 6.1.0 | 业务方法论 |
-| CIS | 0.1.8 | 创意智能套件 |
-| GDS | 0.1.10 | 游戏开发套件 |
-| TEA | 1.6.0 | 测试工程架构 |
-| WDS | 0.3.0 | Web 设计系统 |
+| 模块 | 版本   | 说明             |
+| ---- | ------ | ---------------- |
+| Core | 6.1.0  | 核心工作流和代理 |
+| BMM  | 6.1.0  | 业务方法论       |
+| CIS  | 0.1.8  | 创意智能套件     |
+| GDS  | 0.1.10 | 游戏开发套件     |
+| TEA  | 1.6.0  | 测试工程架构     |
+| WDS  | 0.3.0  | Web 设计系统     |
 
 ### 贡献
 
@@ -183,4 +189,4 @@ cd cloudQuant
 
 ---
 
-*Last updated: 2026-03-13*
+_Last updated: 2026-03-13_

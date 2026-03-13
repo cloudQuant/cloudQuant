@@ -10,16 +10,16 @@ We welcome translations of our documentation! This guide explains how to contrib
 
 ## Supported Languages
 
-| Language | Code | Status |
-|----------|------|--------|
-| English | `en` | ✅ Complete |
-| Chinese (Simplified) | `zh-CN` | ✅ Complete |
+| Language              | Code    | Status         |
+| --------------------- | ------- | -------------- |
+| English               | `en`    | ✅ Complete    |
+| Chinese (Simplified)  | `zh-CN` | ✅ Complete    |
 | Chinese (Traditional) | `zh-TW` | 🔄 In Progress |
-| Japanese | `ja` | ⏳ Planned |
+| Japanese              | `ja`    | ⏳ Planned     |
 
 ## File Naming Convention
 
-```
+```text
 docs/
 ├── README.md           # English (default)
 ├── README.zh-CN.md     # Simplified Chinese

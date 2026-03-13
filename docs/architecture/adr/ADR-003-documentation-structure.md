@@ -1,12 +1,13 @@
 # ADR-003: Documentation Structure
 
-| Status | Date | Decision Makers |
-|--------|------|-----------------|
-| Accepted | 2026-03-13 | cloudQuant |
+| Status   | Date       | Decision Makers |
+| -------- | ---------- | --------------- |
+| Accepted | 2026-03-13 | cloudQuant      |
 
 ## Context
 
 The cloudQuant project requires a clear documentation structure to help users and contributors:
+
 - Find relevant information quickly
 - Understand the project architecture
 - Contribute effectively
@@ -16,7 +17,7 @@ The cloudQuant project requires a clear documentation structure to help users an
 
 Adopt a **three-tier documentation structure**:
 
-```
+```text
 docs/
 ├── README.md           # Documentation hub
 ├── architecture/       # Architecture & ADRs
@@ -30,6 +31,8 @@ docs/
 ```
 
 ### Tier 1: Root Documentation
+
+```text
 - README.md - Project overview
 - CONTRIBUTING.md - Contribution guidelines
 - CHANGELOG.md - Version history
@@ -37,11 +40,13 @@ docs/
 - CODE_OF_CONDUCT.md - Community guidelines
 
 ### Tier 2: Structured Documentation
+
 - docs/architecture/ - Architecture decisions and system design
 - docs/api/ - API documentation and interfaces
 - docs/guides/ - Development guides and tutorials
 
 ### Tier 3: Module Documentation
+
 - _bmad/*/ - BMAD module-specific documentation
 
 ## Consequences
@@ -62,3 +67,4 @@ docs/
 
 - [Write the Docs](https://www.writethedocs.org/)
 - [Documentation Systems](https://documentation.divio.com/)
+```

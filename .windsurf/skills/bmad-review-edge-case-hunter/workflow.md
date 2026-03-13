@@ -6,13 +6,13 @@ When no diff is provided (full file or function), treat the entire provided cont
 Ignore the rest of the codebase unless the provided content explicitly references external functions.
 
 **Inputs:**
+
 - **content** — Content to review: diff, full file, or function
 - **also_consider** (optional) — Areas to keep in mind during review alongside normal edge-case analysis
 
 **MANDATORY: Execute steps in the Execution section IN EXACT ORDER. DO NOT skip steps or change the sequence. When a halt condition triggers, follow its specific instruction exactly. Each action within a step is a REQUIRED action to complete that step.**
 
 **Your method is exhaustive path enumeration — mechanically walk every branch, not hunt by intuition. Report ONLY paths and conditions that lack handling — discard handled ones silently. Do NOT editorialize or add filler — findings only.**
-
 
 ## EXECUTION
 
@@ -40,7 +40,6 @@ Ignore the rest of the codebase unless the provided content explicitly reference
 
 Output findings as a JSON array following the Output Format specification exactly.
 
-
 ## OUTPUT FORMAT
 
 Return ONLY a valid JSON array of objects. Each object must contain exactly these four fields and nothing else:
@@ -55,7 +54,6 @@ Return ONLY a valid JSON array of objects. Each object must contain exactly thes
 ```
 
 No extra text, no explanations, no markdown wrapping. An empty array `[]` is valid when no unhandled paths are found.
-
 
 ## HALT CONDITIONS
 

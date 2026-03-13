@@ -14,7 +14,7 @@ assignees: []
 - [ ] CONTRIBUTING.md
 - [ ] docs/
 - [ ] Inline code comments
-- [ ] Other: ___
+- [ ] Other: \_\_\_
 
 ## 🔍 问题描述
 
@@ -27,4 +27,3 @@ assignees: []
 ## 📝 附加信息
 
 任何其他相关信息。
-

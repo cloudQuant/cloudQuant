@@ -43,8 +43,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
 
       - name: Check Required Files
         run: |
@@ -73,9 +73,8 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1
         with:
-          fail: false
-          args: --verbose --no-progress './**/*.md' --exclude-path './.git' --exclude-path './node_modules'
-        continue-on-error: true
+          fail: true
+          args: --verbose --no-progress './**/*.md' --exclude-path './.git' --exclude-path './node_modules' --exclude-path './_bmad'
 
   security:
     name: Security Check
@@ -99,13 +98,13 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'table'
-          exit-code: '0'
+          scan-type: "fs"
+          scan-ref: "."
+          format: "table"
+          exit-code: "1"
           ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
-        continue-on-error: true
+          severity: "CRITICAL,HIGH"
+          ignorefile: ".trivyignore"
 
   bmad-validate:
     name: BMAD Config Validation
@@ -164,4 +163,4 @@ jobs:
             **/*.md
             !node_modules/**
             !.git/**
-        continue-on-error: true
+            !_bmad/**/*.md

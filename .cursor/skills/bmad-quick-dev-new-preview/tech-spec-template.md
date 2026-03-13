@@ -59,9 +59,11 @@ context: [] # optional: max 3 project-wide standards/docs. NO source code files.
 <!-- AC covers system-level behaviors not captured by the I/O Matrix. Do not duplicate I/O scenarios here. -->
 
 **Execution:**
+
 - [ ] `FILE` -- ACTION -- RATIONALE
 
 **Acceptance Criteria:**
+
 - Given PRECONDITION, when ACTION, then EXPECTED_RESULT
 
 ## Spec Change Log
@@ -84,7 +86,9 @@ DESIGN_RATIONALE_AND_EXAMPLES
 <!-- How the agent confirms its own work. Prefer CLI commands. When no CLI check applies, state what to inspect manually. -->
 
 **Commands:**
+
 - `COMMAND` -- expected: SUCCESS_CRITERIA
 
 **Manual checks (if no CLI):**
+
 - WHAT_TO_INSPECT_AND_EXPECTED_STATE

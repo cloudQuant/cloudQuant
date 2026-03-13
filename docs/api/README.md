@@ -6,25 +6,28 @@
 
 cloudQuant 项目通过 BMAD 框架提供多种 API 接口:
 
-| 模块 | API 类型 | 描述 |
-|------|----------|------|
-| Core | 工作流 API | BMAD 核心工作流接口 |
-| TEA | 测试 API | 自动化测试生成和管理 |
-| WDS | 设计 API | UI 组件和设计系统集成 |
+| 模块 | API 类型   | 描述                  |
+| ---- | ---------- | --------------------- |
+| Core | 工作流 API | BMAD 核心工作流接口   |
+| TEA  | 测试 API   | 自动化测试生成和管理  |
+| WDS  | 设计 API   | UI 组件和设计系统集成 |
 
 ## 🔌 外部项目 API
 
 cloudQuant 维护的量化交易相关项目 API:
 
 ### 交易框架
+
 - [backtrader](https://github.com/cloudQuant/backtrader) - 回测与实盘交易 API
 - [bt_api_py](https://github.com/cloudQuant/bt_api_py) - 统一交易所接口 API
 
 ### 数据接口
+
 - [akshare_web](https://github.com/cloudQuant/akshare_web) - 市场数据 API
 - [pymt5](https://github.com/cloudQuant/pymt5) - MT5 Web Terminal API
 
 ### 分析工具
+
 - [alphalens](https://github.com/cloudQuant/alphalens) - 因子分析 API
 - [pyfolio](https://github.com/cloudQuant/pyfolio) - 组合分析 API
 
@@ -51,4 +54,4 @@ api = bt_api_py.ExchangeAPI(
 
 ---
 
-*最后更新: 2026-03-13*
+_最后更新: 2026-03-13_

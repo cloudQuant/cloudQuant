@@ -1,12 +1,13 @@
 # ADR-002: Multi-IDE Configuration Strategy
 
-| Status | Date | Decision Makers |
-|--------|------|-----------------|
-| Accepted | 2026-03-13 | cloudQuant |
+| Status   | Date       | Decision Makers |
+| -------- | ---------- | --------------- |
+| Accepted | 2026-03-13 | cloudQuant      |
 
 ## Context
 
 cloudQuant project needs to support multiple AI-powered IDEs for development:
+
 - Claude Code
 - Cursor
 - OpenCode
@@ -14,6 +15,7 @@ cloudQuant project needs to support multiple AI-powered IDEs for development:
 - Codex
 
 Each IDE has its own configuration format and directory structure. Maintaining separate configurations could lead to:
+
 - Configuration drift between IDEs
 - Inconsistent behavior across development environments
 - Increased maintenance burden
