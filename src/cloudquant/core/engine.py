@@ -5,9 +5,14 @@ This module provides the core backtesting functionality for evaluating
 trading strategies against historical data.
 """
 
-from typing import Optional
+from __future__ import annotations
+
+from typing import Optional, TYPE_CHECKING
 from datetime import datetime
 import logging
+
+if TYPE_CHECKING:
+    from cloudquant.types import BacktestResult, StrategyProtocol, DataProtocol
 
 logger = logging.getLogger(__name__)
 
@@ -62,32 +67,48 @@ class BacktestEngine:
             f"commission={commission}"
         )
     
-    def run(self, strategy: object, data: object) -> dict:
+    def run(
+        self,
+        strategy: Optional[StrategyProtocol] = None,
+        data: Optional[DataProtocol] = None,
+    ) -> BacktestResult:
         """
         Run backtest with given strategy and data.
         
         Args:
-            strategy: Trading strategy to test
-            data: Historical market data
+            strategy: Trading strategy to test (must implement StrategyProtocol)
+            data: Historical market data (must implement DataProtocol)
         
         Returns:
-            Dictionary containing backtest results and metrics
+            BacktestResult containing backtest results and metrics
         
-        TODO:
-            - Implement actual backtesting logic
-            - Add performance metrics calculation
-            - Add risk metrics (Sharpe ratio, max drawdown, etc.)
+        Raises:
+            ValueError: If strategy or data is None and no fallback available
+        
+        Note:
+            Current implementation is a placeholder. Full implementation will:
+            - Iterate through data points
+            - Call strategy.on_data() for each point
+            - Track positions and capital
+            - Calculate performance metrics
         """
-        # Placeholder implementation
         logger.info("Starting backtest...")
         
-        results = {
+        if strategy is None:
+            logger.warning("No strategy provided, using placeholder results")
+        
+        if data is None:
+            logger.warning("No data provided, using placeholder results")
+        
+        results: BacktestResult = {
             "initial_capital": self.initial_capital,
             "final_capital": self.current_capital,
             "total_return": 0.0,
             "sharpe_ratio": 0.0,
             "max_drawdown": 0.0,
             "total_trades": 0,
+            "win_rate": None,
+            "profit_factor": None,
         }
         
         logger.info(f"Backtest completed. Final capital: {self.current_capital}")

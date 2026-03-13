@@ -5,10 +5,15 @@ All trading strategies should inherit from this base class
 and implement the required methods.
 """
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
-from typing import Any, Optional
+from typing import Optional, TYPE_CHECKING
 from datetime import datetime
 import logging
+
+if TYPE_CHECKING:
+    from cloudquant.types import MarketData, BarData, Order
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +46,7 @@ class Strategy(ABC):
         logger.info(f"Initialized strategy: {name}")
     
     @abstractmethod
-    def on_data(self, data: Any) -> None:
+    def on_data(self, data: "MarketData") -> None:
         """
         Process incoming data point.
         
@@ -53,7 +58,7 @@ class Strategy(ABC):
         """
         pass
     
-    def on_bar(self, bar: Any) -> None:
+    def on_bar(self, bar: "BarData") -> None:
         """
         Process bar/candle data.
         
