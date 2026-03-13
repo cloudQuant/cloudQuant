@@ -3,6 +3,9 @@
 [![BMAD Version](https://img.shields.io/badge/BMAD-6.1.0-blue.svg)](https://github.com/bmad-code-org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](#license)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![GitHub Stars](https://img.shields.io/github/stars/cloudQuant/cloudQuant?style=social)](https://github.com/cloudQuant/cloudQuant/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/cloudQuant/cloudQuant)](https://github.com/cloudQuant/cloudQuant/issues)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/cloudQuant/cloudQuant)](https://github.com/cloudQuant/cloudQuant/commits/main)
 
 **AI-Powered Development Framework for Quantitative Trading Systems**
 

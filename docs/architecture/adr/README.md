@@ -51,6 +51,8 @@
 | 编号 | 标题 | 状态 | 日期 |
 |------|------|------|------|
 | [ADR-001](ADR-001-bmad-modular-architecture.md) | BMAD 模块化架构 | 已采纳 | 2026-03-13 |
+| [ADR-002](ADR-002-multi-ide-configuration.md) | 多 IDE 配置策略 | 已采纳 | 2026-03-13 |
+| [ADR-003](ADR-003-documentation-structure.md) | 文档结构设计 | 已采纳 | 2026-03-13 |
 
 ---
 

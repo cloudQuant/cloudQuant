@@ -1,0 +1,29 @@
+# GitHub Pages Configuration
+
+theme: jekyll-theme-minimal
+title: cloudQuant BMAD Framework
+description: AI-Powered Development Framework for Quantitative Trading Systems
+
+show_downloads: true
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-readme-index
+  - jekyll-default-layout
+
+exclude:
+  - .git/
+  - .github/
+  - _bmad/
+  - _bmad-output/
+  - design-artifacts/
+  - node_modules/
+  - "*.md"
+  - "!docs/**/*.md"
+
+include:
+  - docs/
