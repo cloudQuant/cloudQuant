@@ -1,0 +1,28 @@
+# CODEOWNERS - Define code owners for this repository
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything
+* @cloudQuant
+
+# Documentation
+README.md @cloudQuant
+CONTRIBUTING.md @cloudQuant
+CHANGELOG.md @cloudQuant
+SECURITY.md @cloudQuant
+CODE_OF_CONDUCT.md @cloudQuant
+docs/ @cloudQuant
+
+# BMAD Framework
+_bmad/ @cloudQuant
+
+# CI/CD
+.github/ @cloudQuant
+
+# IDE Configurations
+.claude/ @cloudQuant
+.cursor/ @cloudQuant
+.opencode/ @cloudQuant
+.windsurf/ @cloudQuant
+
+# Design artifacts
+design-artifacts/ @cloudQuant
