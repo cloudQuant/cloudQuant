@@ -1,0 +1,9 @@
+# Trivy Ignore File
+# This file contains CVE IDs that should be ignored during security scanning
+
+# Example ignore entries (uncomment and modify as needed):
+# CVE-2023-XXXXX - Reason for ignoring
+# CVE-2024-XXXXX - Temporary ignore until fixed
+
+# Documentation about false positives in markdown files
+# Markdown files may contain example code that triggers false positives

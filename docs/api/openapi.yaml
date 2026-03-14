@@ -1,0 +1,604 @@
+openapi: 3.0.3
+info:
+  title: cloudQuant API
+  description: |
+    AI-Powered Quantitative Trading Platform API
+
+    ## 认证
+
+    所有 API 请求需要在 Header 中包含有效的 Bearer Token：
+    ```
+    Authorization: Bearer <your-api-key>
+    ```
+
+    ## 速率限制
+
+    - 标准计划：100 请求/分钟
+    - 专业计划：1000 请求/分钟
+    - 企业计划：无限制
+
+    ## 错误处理
+
+    所有错误响应遵循统一格式：
+    ```json
+    {
+      "error": {
+        "code": "ERROR_CODE",
+        "message": "详细错误信息",
+        "details": {}
+      }
+    }
+    ```
+  version: 1.0.0
+  contact:
+    name: cloudQuant Team
+    email: yunjinqi@gmail.com
+    url: https://github.com/cloudQuant/cloudQuant
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.cloudquant.io/v1
+    description: 生产环境
+  - url: https://api-staging.cloudquant.io/v1
+    description: 测试环境
+
+tags:
+  - name: strategies
+    description: 策略管理
+  - name: backtest
+    description: 回测引擎
+  - name: trading
+    description: 实盘交易
+  - name: data
+    description: 数据服务
+  - name: analytics
+    description: 分析报告
+  - name: risk
+    description: 风险管理
+
+paths:
+  /strategies:
+    get:
+      tags: [strategies]
+      summary: 获取策略列表
+      description: 返回用户的所有交易策略
+      operationId: listStrategies
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, inactive, draft]
+      responses:
+        "200":
+          description: 成功返回策略列表
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StrategyList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+    post:
+      tags: [strategies]
+      summary: 创建新策略
+      operationId: createStrategy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StrategyCreate"
+      responses:
+        "201":
+          description: 策略创建成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Strategy"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /strategies/{strategyId}:
+    get:
+      tags: [strategies]
+      summary: 获取策略详情
+      operationId: getStrategy
+      parameters:
+        - $ref: "#/components/parameters/strategyId"
+      responses:
+        "200":
+          description: 成功返回策略详情
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Strategy"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    put:
+      tags: [strategies]
+      summary: 更新策略
+      operationId: updateStrategy
+      parameters:
+        - $ref: "#/components/parameters/strategyId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StrategyUpdate"
+      responses:
+        "200":
+          description: 策略更新成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Strategy"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    delete:
+      tags: [strategies]
+      summary: 删除策略
+      operationId: deleteStrategy
+      parameters:
+        - $ref: "#/components/parameters/strategyId"
+      responses:
+        "204":
+          description: 策略删除成功
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /backtest:
+    post:
+      tags: [backtest]
+      summary: 运行回测
+      description: 使用历史数据测试策略表现
+      operationId: runBacktest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BacktestRequest"
+      responses:
+        "202":
+          description: 回测任务已创建
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BacktestJob"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+  /backtest/{jobId}:
+    get:
+      tags: [backtest]
+      summary: 获取回测结果
+      operationId: getBacktestResult
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: 回测结果
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BacktestResult"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /trading/orders:
+    get:
+      tags: [trading]
+      summary: 获取订单列表
+      operationId: listOrders
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [pending, filled, cancelled, rejected]
+        - name: symbol
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 订单列表
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderList"
+
+    post:
+      tags: [trading]
+      summary: 创建订单
+      operationId: createOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderCreate"
+      responses:
+        "201":
+          description: 订单创建成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+
+  /data/market/{symbol}:
+    get:
+      tags: [data]
+      summary: 获取市场数据
+      operationId: getMarketData
+      parameters:
+        - name: symbol
+          in: path
+          required: true
+          schema:
+            type: string
+          example: BTC/USDT
+        - name: interval
+          in: query
+          schema:
+            type: string
+            enum: [1m, 5m, 15m, 1h, 4h, 1d]
+            default: 1h
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+            maximum: 1000
+      responses:
+        "200":
+          description: 市场数据
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MarketData"
+
+components:
+  parameters:
+    strategyId:
+      name: strategyId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: 策略 ID
+
+  schemas:
+    Strategy:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive, draft]
+        code:
+          type: string
+        parameters:
+          type: object
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    StrategyList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Strategy"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+
+    StrategyCreate:
+      type: object
+      required:
+        - name
+        - code
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+        code:
+          type: string
+        parameters:
+          type: object
+
+    StrategyUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        parameters:
+          type: object
+        status:
+          type: string
+          enum: [active, inactive, draft]
+
+    BacktestRequest:
+      type: object
+      required:
+        - strategyId
+        - startDate
+        - endDate
+      properties:
+        strategyId:
+          type: string
+          format: uuid
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        initialCapital:
+          type: number
+          default: 100000
+        commission:
+          type: number
+          default: 0.001
+
+    BacktestJob:
+      type: object
+      properties:
+        jobId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, running, completed, failed]
+        estimatedTime:
+          type: integer
+          description: 预估完成时间（秒）
+
+    BacktestResult:
+      type: object
+      properties:
+        jobId:
+          type: string
+          format: uuid
+        status:
+          type: string
+        metrics:
+          type: object
+          properties:
+            totalReturn:
+              type: number
+            sharpeRatio:
+              type: number
+            maxDrawdown:
+              type: number
+            winRate:
+              type: number
+            totalTrades:
+              type: integer
+        trades:
+          type: array
+          items:
+            $ref: "#/components/schemas/Trade"
+        equityCurve:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+              value:
+                type: number
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        symbol:
+          type: string
+        side:
+          type: string
+          enum: [buy, sell]
+        type:
+          type: string
+          enum: [market, limit, stop, stop_limit]
+        quantity:
+          type: number
+        price:
+          type: number
+        status:
+          type: string
+          enum: [pending, filled, cancelled, rejected]
+        filledQuantity:
+          type: number
+        averagePrice:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+
+    OrderList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Order"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+
+    OrderCreate:
+      type: object
+      required:
+        - symbol
+        - side
+        - type
+        - quantity
+      properties:
+        symbol:
+          type: string
+        side:
+          type: string
+          enum: [buy, sell]
+        type:
+          type: string
+          enum: [market, limit, stop, stop_limit]
+        quantity:
+          type: number
+          minimum: 0
+        price:
+          type: number
+        stopPrice:
+          type: number
+        timeInForce:
+          type: string
+          enum: [GTC, IOC, FOK]
+          default: GTC
+
+    Trade:
+      type: object
+      properties:
+        id:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        symbol:
+          type: string
+        side:
+          type: string
+          enum: [buy, sell]
+        quantity:
+          type: number
+        price:
+          type: number
+        pnl:
+          type: number
+
+    MarketData:
+      type: object
+      properties:
+        symbol:
+          type: string
+        interval:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              open:
+                type: number
+              high:
+                type: number
+              low:
+                type: number
+              close:
+                type: number
+              volume:
+                type: number
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        totalPages:
+          type: integer
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: object
+
+  responses:
+    BadRequest:
+      description: 请求参数错误
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    Unauthorized:
+      description: 未授权
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    NotFound:
+      description: 资源不存在
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []

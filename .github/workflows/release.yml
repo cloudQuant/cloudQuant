@@ -1,0 +1,26 @@
+# =========================
+# cloudQuant Release Workflow
+# =========================
+
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create Release Notes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Generate Release Notes
+        run: |
+          echo "🎉 Release published!"
+          echo "Tag: ${{ github.event.release.tag_name }}"
+          echo "Name: ${{ github.event.release.name }}"

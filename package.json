@@ -1,0 +1,57 @@
+{
+  "name": "cloudquant",
+  "version": "0.1.0",
+  "description": "AI-Powered Development Framework for Quantitative Trading Systems",
+  "author": {
+    "name": "cloudQuant Team",
+    "email": "yunjinqi@gmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "lint": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.git\" \"#_bmad\" \"#.agents\" \"#.claude\" \"#.cursor\" \"#.opencode\" \"#.windsurf\" \"#.github/ISSUE_TEMPLATE\"",
+    "lint:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\" \"#.git\" \"#_bmad\" \"#.agents\" \"#.claude\" \"#.cursor\" \"#.opencode\" \"#.windsurf\" \"#.github/ISSUE_TEMPLATE\"",
+    "format": "prettier --write \"**/*.{md,json,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{md,json,yaml,yml}\"",
+    "validate": "npm run lint && npm run format:check",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "markdownlint-cli2": "^0.17.2",
+    "prettier": "^3.2.0",
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0"
+  },
+  "lint-staged": {
+    "*.md": [
+      "markdownlint-cli2",
+      "prettier --write"
+    ],
+    "*.{json,yaml,yml}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudQuant/cloudQuant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cloudQuant/cloudQuant/issues"
+  },
+  "homepage": "https://github.com/cloudQuant/cloudQuant#readme",
+  "keywords": [
+    "quantitative-trading",
+    "backtesting",
+    "algorithmic-trading",
+    "ai",
+    "machine-learning",
+    "bmad"
+  ]
+}

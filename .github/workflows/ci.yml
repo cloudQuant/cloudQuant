@@ -1,0 +1,243 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-test:
+    name: Python Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,backtest]"
+
+      - name: Run linting with ruff
+        run: |
+          ruff check src tests
+
+      - name: Check formatting with black
+        run: |
+          black --check src tests
+
+      - name: Check import sorting
+        run: |
+          isort --check-only src tests
+
+      - name: Run type checking
+        run: |
+          mypy src
+        continue-on-error: true
+
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=xml --cov-report=term-missing
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install bandit safety
+
+      - name: Run Bandit security scan
+        run: |
+          bandit -r src -f json -o bandit-report.json || true
+
+      - name: Check for known vulnerabilities
+        run: |
+          safety check --full-report
+        continue-on-error: true
+
+  lint:
+    name: Lint Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Check Markdown Files
+        run: |
+          echo "Checking Markdown files..."
+          find . -name "*.md" -type f | head -20
+
+      - name: Validate YAML Files
+        run: |
+          echo "Validating YAML files..."
+          find . -name "*.yaml" -o -name "*.yml" -type f | head -20
+
+  docs:
+    name: Documentation Check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [20]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Check Required Files
+        run: |
+          echo "Checking required documentation files..."
+          files=("README.md" "CHANGELOG.md" "CONTRIBUTING.md" ".gitignore" "SECURITY.md" "CODE_OF_CONDUCT.md")
+          for file in "${files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file exists"
+            else
+              echo "❌ $file is missing"
+              exit 1
+            fi
+          done
+
+      - name: Check Docs Directory
+        run: |
+          echo "Checking docs directory..."
+          if [ -d "docs" ]; then
+            echo "✅ docs/ directory exists"
+            ls -la docs/
+          else
+            echo "❌ docs/ directory is missing"
+            exit 1
+          fi
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1
+        with:
+          fail: true
+          args: --verbose --no-progress './**/*.md' --exclude-path './.git' --exclude-path './node_modules' --exclude-path './_bmad'
+
+  security:
+    name: Security Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Check for Secrets
+        run: |
+          echo "Checking for potential secrets..."
+          if grep -r --include="*.md" --include="*.yaml" --include="*.yml" \
+            -e "(api[_-]?key|apikey|secret|password|token|credential)" \
+            --exclude-dir=".git" . 2>/dev/null; then
+            echo "⚠️ Warning: Potential secrets found in files"
+            exit 1
+          else
+            echo "✅ No obvious secrets found"
+          fi
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: "fs"
+          scan-ref: "."
+          format: "table"
+          exit-code: "1"
+          ignore-unfixed: true
+          severity: "CRITICAL,HIGH"
+          ignorefile: ".trivyignore"
+
+  bmad-validate:
+    name: BMAD Config Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate BMAD Structure
+        run: |
+          echo "Validating BMAD structure..."
+          required_dirs=("_bmad/core" "_bmad/bmm" "_bmad/_config")
+          for dir in "${required_dirs[@]}"; do
+            if [ -d "$dir" ]; then
+              echo "✅ $dir exists"
+            else
+              echo "❌ $dir is missing"
+              exit 1
+            fi
+          done
+
+      - name: Validate Manifest
+        run: |
+          echo "Validating manifest..."
+          if [ -f "_bmad/_config/manifest.yaml" ]; then
+            echo "✅ manifest.yaml exists"
+            cat _bmad/_config/manifest.yaml
+          else
+            echo "❌ manifest.yaml is missing"
+            exit 1
+          fi
+
+      - name: Validate IDE Configs
+        run: |
+          echo "Validating IDE configurations..."
+          ide_dirs=(".claude" ".cursor" ".opencode" ".windsurf")
+          for dir in "${ide_dirs[@]}"; do
+            if [ -d "$dir" ]; then
+              echo "✅ $dir exists"
+            else
+              echo "⚠️ $dir is missing (optional)"
+            fi
+          done
+
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Lint Markdown Files
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: |
+            **/*.md
+            !node_modules/**
+            !.git/**
+            !_bmad/**/*.md
