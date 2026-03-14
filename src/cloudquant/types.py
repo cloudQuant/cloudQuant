@@ -5,9 +5,9 @@ This module contains Protocol definitions, type aliases, and typed dictionaries
 used throughout the codebase for better type safety and IDE support.
 """
 
-from typing import Protocol, TypedDict, Optional, Any
 from datetime import datetime
 from enum import Enum
+from typing import Any, Protocol, TypedDict
 
 
 class OrderSide(str, Enum):
@@ -37,19 +37,20 @@ class TickData(TypedDict, total=False):
     timestamp: datetime
     price: float
     volume: float
-    bid: Optional[float]
-    ask: Optional[float]
+    bid: float | None
+    ask: float | None
 
 
 class MarketData(TypedDict, total=False):
     """Generic market data structure."""
+
     symbol: str
-    timestamp: datetime
+    timestamp: datetime | None
     close: float
-    open: Optional[float]
-    high: Optional[float]
-    low: Optional[float]
-    volume: Optional[float]
+    open: float | None
+    high: float | None
+    low: float | None
+    volume: float | None
 
 
 class Order(TypedDict):
@@ -58,9 +59,9 @@ class Order(TypedDict):
     side: OrderSide
     order_type: OrderType
     size: float
-    price: Optional[float]
+    price: float | None
     timestamp: datetime
-    symbol: Optional[str]
+    symbol: str | None
 
 
 class Position(TypedDict):
@@ -81,59 +82,59 @@ class BacktestResult(TypedDict):
     sharpe_ratio: float
     max_drawdown: float
     total_trades: int
-    win_rate: Optional[float]
-    profit_factor: Optional[float]
+    win_rate: float | None
+    profit_factor: float | None
 
 
 class StrategyProtocol(Protocol):
     """Protocol defining the interface for trading strategies."""
-    
+
     name: str
     position: int
     orders: list[Order]
-    
+
     def on_data(self, data: MarketData) -> None:
         """Process incoming market data."""
         ...
-    
+
     def on_bar(self, bar: BarData) -> None:
         """Process bar/candle data."""
         ...
-    
-    def buy(self, size: float, price: Optional[float] = None) -> Order:
+
+    def buy(self, size: float, price: float | None = None) -> Order:
         """Place a buy order."""
         ...
-    
-    def sell(self, size: float, price: Optional[float] = None) -> Order:
+
+    def sell(self, size: float, price: float | None = None) -> Order:
         """Place a sell order."""
         ...
 
 
 class DataProtocol(Protocol):
     """Protocol defining the interface for market data."""
-    
+
     def __len__(self) -> int:
         """Return number of data points."""
         ...
-    
+
     def __getitem__(self, key: int) -> MarketData:
         """Get data point by index."""
         ...
-    
+
     def to_dataframe(self) -> Any:
         """Convert to DataFrame format."""
         ...
 
 
 __all__ = [
-    "OrderSide",
-    "OrderType",
+    "BacktestResult",
     "BarData",
-    "TickData",
+    "DataProtocol",
     "MarketData",
     "Order",
+    "OrderSide",
+    "OrderType",
     "Position",
-    "BacktestResult",
     "StrategyProtocol",
-    "DataProtocol",
+    "TickData",
 ]

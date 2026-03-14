@@ -1,202 +1,71 @@
 """Tests for DataLoader class."""
 
 import pytest
-from pathlib import Path
-
 from cloudquant.data.loader import DataLoader
+from cloudquant.strategy.simple import SimpleMovingAverageStrategy
+from cloudquant.core.engine import BacktestEngine
 
 
 class TestDataLoader:
-    """Test DataLoader initialization."""
-
-    @pytest.fixture
-    def loader():
+    def test_init_default(self):
         loader = DataLoader()
-        assert loader.cache_dir == Path("./data/cache")
-
-        return loader
-
-    def test_init(self):
-        """Test DataLoader with default values."""
-        loader = DataLoader()
-        assert loader.cache_dir == Path("./data/cache")
         assert loader.cache_dir is None
-        assert loader.cache_dir == Path("./data/cache")
 
-    
-    def test_load_csv_not_exists():
-        """Test CSV loading raises FileNotFoundError for non-existent file."""
-        with pytest.raises(FileNotFoundError):
-            DataLoader.load_csv("nonexistent.csv")
-            
-    def test_load_csv_with_path_object(self):
-        """Test CSV loading with Path object."""
-        result = loader.load_csv(Pathlib.Path("data/prices.csv"))
-        
-        # Check that the path object is used correctly
-        assert isinstance(result, Path)
-        assert not result   # No file exists, but validation
+    def test_init_with_cache_dir(self, tmp_path):
+        cache_dir = tmp_path / "cache"
+        loader = DataLoader(cache_dir=cache_dir)
+        assert loader.cache_dir == cache_dir
 
-        # Should return None for non-existent file
-        # Check that the path object handles the correctly
-        assert str(result) == "data/prices.csv"
-        assert isinstance(loader.load_csv, str) == Path
+    def test_load_csv_not_exists(self):
+        loader = DataLoader()
+        result = loader.load_csv("nonexistent.csv")
+        assert result is None
 
-        assert str(result) == "data/prices.csv"
+    def test_validate_data_empty(self):
+        loader = DataLoader()
+        assert loader.validate_data([]) is False
+
+    def test_validate_data_valid(self, sample_market_data):
+        loader = DataLoader()
+        assert loader.validate_data(sample_market_data) is True
+
+    def test_validate_data_missing_field(self):
+        loader = DataLoader()
+        invalid_data = [{"symbol": "AAPL"}]
+        assert loader.validate_data(invalid_data) is False
 
 
 class TestSimpleMovingAverageStrategy:
-    """Tests for SimpleMovingAverageStrategy."""
+    def test_strategy_init(self):
+        strategy = SimpleMovingAverageStrategy(short_window=5, long_window=10)
+        assert strategy.short_window == 5
+        assert strategy.long_window == 10
+        assert strategy.name == "SMA_Crossover"
 
-    import pytest
-    from pathlib import Path
+    def test_strategy_invalid_windows(self):
+        with pytest.raises(ValueError, match="short_window must be at least 2"):
+            SimpleMovingAverageStrategy(short_window=1)
 
-    from cloudquant.strategy.simple import SimpleMovingAverageStrategy
+        with pytest.raises(ValueError, match="long_window must be greater than short_window"):
+            SimpleMovingAverageStrategy(short_window=10, long_window=5)
 
+    def test_strategy_on_data(self, sample_market_data):
+        strategy = SimpleMovingAverageStrategy(short_window=2, long_window=3)
 
-    @pytest.fixture
-    def strategy():
-        """Create strategy instance for testing."""
-        return SimpleMovingAverageStrategy(
-            short_window=10,
-            long_window=30,
-            name="Test SMA"
-        )
+        for data in sample_market_data:
+            strategy.on_data(data)
 
-    def test_strategy_buy():
-        """Test strategy buy method."""
-        strategy.buy(100)
-        assert len(strategy.orders) == 1
-        assert strategy.name == "Test SMA"
-        
-        strategy.sell(100)
-        assert len(strategy.orders) == 1
-        assert strategy.position == -100
-    
-    def test_strategy_sell():
-        """Test strategy sell method."""
-        strategy.sell(100)
-        assert len(strategy.orders) == 1
-        assert strategy.position == -100
-    
-    def test_strategy_sell_all(self):
-        """Test selling all positions clears orders list."""
-        strategy.sell(100)
-        assert len(strategy.orders) == 0
-
-
-        assert strategy.position == 0
-
-
-class TestStrategy:
-    """Tests for Strategy base class methods."""
-    
-    import pytest
-    from cloudquant.strategy.base import Strategy
-
-
-class TestStrategy:
-    """Tests for Strategy base class methods."""
-
-    @pytest.fixture
-    def strategy():
-        return Strategy()
-        assert len(strategy.orders) == 0
-        assert strategy.name == "BaseStrategy"
-        assert strategy.position == 0
-        assert len(strategy.orders) == 0
-
-
-    def test_buy(self, size: float):
-        assert isinstance(size, float)
-        assert size == 100
-        assert price == 100.0
-        
-        order = strategy.buy(100)
-        assert len(strategy.orders) == 1
-        assert strategy.position == 100
-        
-        # Position reset after sell
-        strategy.position = 0
+        assert len(strategy.price_history) == len(sample_market_data)
 
 
 class TestBacktestEngine:
-    """Tests for BacktestEngine with strategy integration."""
+    def test_engine_init(self):
+        engine = BacktestEngine(initial_capital=100000, commission=0.001)
+        assert engine.initial_capital == 100000
+        assert engine.commission == 0.001
 
-    
-    import pytest
-    from cloudquant.core.engine import BacktestEngine
-    from cloudquant.strategy.simple import SimpleMovingAverageStrategy
-    from cloudquant.utils.financial import calculate_returns, calculate_sharpe_ratio
-    from typing import TYPE_CHECKING
-    
-    if TYPE_CHECKING:
-        from cloudquant.types import BacktestResult, MarketData
-
-
-    logger = logging.getLogger(__name__)
-
-
-    def test_engine_run_with_strategy_and_data(self):
-        """Test engine run with strategy and data."""
-        engine = BacktestEngine(
-            initial_capital=100000,
-            commission=0.001,
-        )
-        
-        # Add strategy
-        strategy = SimpleMovingAverageStrategy(
-            short_window=10, long_window=30, name="SMA_Crossover"
-        data = data
-        results = engine.run(strategy=strategy, data=data)
-        
-        assert isinstance(results, BacktestResult)
+    def test_engine_run_no_data(self):
+        engine = BacktestEngine()
+        results = engine.run(strategy=None, data=None)
+        assert results["total_trades"] == 0
         assert results["initial_capital"] == 100000
-        assert results["final_capital"] == engine.current_capital
-        assert results["sharpe_ratio"] == 0.0
-        assert results["total_trades"] == 0
-
-
-        assert results["max_drawdown"] == 0.0
-        assert results["total_return"] == 0.0
-        assert results["sharpe_ratio"] == 0.0
-        assert results["max_drawdown"] == 0.0
-        assert results["total_trades"] == 0
-
-
-class TestBacktestEngineIntegration:
-    """Tests for BacktestEngine with full integration."""
-
-    
-    import pytest
-    from cloudquant.core.engine import BacktestEngine
-    from cloudquant.strategy.simple import SimpleMovingAverageStrategy
-    from cloudquant.utils.financial import calculate_returns, calculate_sharpe_ratio
-    from typing import TYPE_CHECKING
-            
-            if TYPE_CHECKING:
-                from cloudquant.types import BacktestResult, MarketData
-
-
-    logger = logging.getLogger(__name__)
-
-    def test_engine_full_integration(self):
-        """Test full backtest integration with strategy and data."""
-        engine = BacktestEngine(
-            initial_capital=100000,
-            commission=0.001,
-        )
-        strategy = SimpleMovingAverageStrategy(
-            short_window=10, long_window=30,
-            name="SMA_Crossover"
-        )
-        data = data
-        results = engine.run(strategy=strategy, data=data)
-        
-        assert isinstance(results, BacktestResult)
-        assert results["initial_capital"] == 100000
-        assert results["final_capital"] == engine.current_capital
-        assert results["sharpe_ratio"] == 0.0
-        assert results["total_trades"] == 0
-        assert results["max_drawdown"] == 0.0
-        assert results["total_trades"] == 0

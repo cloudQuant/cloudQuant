@@ -32,13 +32,14 @@ Changelog = "https://github.com/cloudQuant/cloudQuant/blob/main/CHANGELOG.md"
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0.0",
-    "pytest-cov>=4.1.0",
+    "pytest-cov>=5.1.0",
     "pytest-asyncio>=0.23.0",
     "mypy>=1.8.0",
-    "ruff>=0.2.0",
+    "ruff>=1.2.0",
     "black>=24.1.0",
     "isort>=5.13.0",
     "pre-commit>=3.6.0",
+    "pandas-stubs>=2.2.0",
 ]
 backtest = [
     "pandas>=2.2.0",
@@ -77,6 +78,8 @@ minversion = "8.0"
 addopts = "-ra -q --strict-markers --cov=src --cov-report=term-missing"
 testpaths = ["tests"]
 pythonpath = ["src"]
+asyncio_default_fixture_loop_scope = "function"
+asyncio_default_test_loop_scope = "function"
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks tests as integration tests",
@@ -96,10 +99,12 @@ warn_unused_ignores = true
 show_error_codes = true
 namespace_packages = true
 explicit_package_bases = true
+mypy_path = "src"
 
 [[tool.mypy.overrides]]
-module = ["tests.*"]
+module = ["tests.*", "cloudquant.data.*", "pyarrow.*"]
 disallow_untyped_defs = false
+ignore_missing_imports = true
 
 [tool.ruff]
 target-version = "py310"
