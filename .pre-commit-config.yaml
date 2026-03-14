@@ -1,0 +1,88 @@
+# Pre-commit configuration for cloudQuant
+# See https://pre-commit.com for more information
+
+default_stages: [pre-commit]
+default_language_version:
+  python: python3.10
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(.*\.md|.*\.py)$
+      - id: end-of-file-fixer
+        exclude: ^.*\.md$
+      - id: check-yaml
+        args: [--unsafe]
+      - id: check-json
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: detect-private-key
+      - id: debug-statements
+        files: \.py$
+      - id: mixed-line-ending
+        args: [--fix=lf]
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.5
+    hooks:
+      - id: forbid-crlf
+        exclude: \.bat$
+      - id: remove-crlf
+        exclude: \.bat$
+      - id: forbid-tabs
+        exclude: ^(Makefile|.*\.go|.*\.sum|.*\.mod)$
+      - id: remove-tabs
+        exclude: ^(Makefile|.*\.go|.*\.sum|.*\.mod)$
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.39.0
+    hooks:
+      - id: markdownlint
+        args: [--fix, --disable, MD013, MD033, MD041, --]
+        exclude: ^(_bmad|\.agents|\.claude|\.cursor|\.opencode|\.windsurf|\.github/ISSUE_TEMPLATE)/
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        types_or: [yaml, json, css, scss]
+        exclude: ^(package.*\.json|_bmad/|\.agents/|\.claude/|\.cursor/|\.opencode/|\.windsurf/)
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.2.2
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - pyyaml>=6.0
+          - types-pyyaml
+        args: [--config-file=pyproject.toml]
+        pass_filenames: false
+        files: ^src/
+
+# CI-specific hooks (run only in CI)
+ci:
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest-check
+        entry: pytest tests/ -v --tb=short
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: coverage-check
+        name: coverage-check
+        entry: coverage report --fail-under=80
+        language: system
+        pass_filenames: false
+        always_run: true

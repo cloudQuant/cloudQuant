@@ -1,0 +1,32 @@
+# BMAD Framework (third-party, do not modify)
+_bmad/
+_bmad-output/
+
+# IDE configurations with BMAD skills (symlinks to _bmad)
+.agents/
+.claude/
+.cursor/
+.opencode/
+.windsurf/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE settings
+.vscode/
+.idea/
+.devcontainer/
+
+# Generated artifacts
+design-artifacts/
