@@ -72,7 +72,6 @@ Recent active repositories: `opendata`, `backtrader`, `fincore`, `fincore_cpp`, 
 
 - [`fincore`](https://github.com/cloudQuant/fincore) — quantitative performance & risk analytics: 150+ financial metrics, portfolio optimization, Monte Carlo simulation, and attribution — the actively maintained successor to empyrical, pyfolio, and alphalens
 - [`fincore_cpp`](https://github.com/cloudQuant/fincore_cpp) — the C++ version of fincore
-- [`empyrical_cpp`](https://github.com/cloudQuant/empyrical_cpp) — header-only C++20 reimplementation of empyrical
 
 ### Data Platform
 
@@ -188,7 +187,6 @@ AI 原生工作流：
 
 - [`fincore`](https://github.com/cloudQuant/fincore) — 量化绩效与风险分析：150+ 金融指标、组合优化、蒙特卡洛模拟与归因分析，是 empyrical / pyfolio / alphalens 的活跃维护后继
 - [`fincore_cpp`](https://github.com/cloudQuant/fincore_cpp) — C++ 版
-- [`empyrical_cpp`](https://github.com/cloudQuant/empyrical_cpp) — C++20 header-only 的 empyrical 重实现
 
 ### 数据平台
 
