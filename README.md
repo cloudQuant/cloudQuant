@@ -6,49 +6,50 @@
 
 ## English Version
 
-Quant focused on algorithmic trading systems, research tooling, broker and exchange integration, and performance-oriented engineering across Python, C++, Rust, and TypeScript.
+Quant engineer building the infrastructure behind systematic trading: high-performance backtesting and analytics, market-data platforms, and multi-venue execution. Python first, with C++ / Rust / TypeScript where performance or tooling demands it.
 
 ## About Me
 
 - Quant credentials: `CFA`, `FRM`, `CIIA`, `CFP`
+- Market coverage: China A-shares, domestic futures, and cross-market multi-asset research
 - Main interests:
-  - Algorithmic trading
-  - Trading strategies and strategy research
+  - Algorithmic trading and strategy research
   - Backtesting and strategy engineering
-  - Portfolio and factor analytics
-  - High-performance systems
+  - Portfolio, factor and risk analytics
+  - Market-data engineering and data quality
+  - High-performance systems (C++ / Rust / pybind11)
   - AI-assisted research and developer tooling
 
 ## What I've Been Working On Recently
 
-Over the last two years, my GitHub work has concentrated on three project ecosystems: the **backtrader** trading framework and its AI-native tooling, the **fincore** analytics family, and the **bt_api** multi-exchange SDK ecosystem.
+Over the past two years, my GitHub work has centered on four project ecosystems:
 
-Recent active contribution areas include:
+- `backtrader` — a performance-optimized Backtrader fork (Python + C++), its web platform, and an AI-native strategy-development workflow
+- `fincore` — unified quantitative performance, risk and factor analytics
+- `opendata` — a multi-source financial data middle platform (ingestion → warehouse → REST / WebSocket services)
+- `bt_api` — a standardized multi-venue trading API ecosystem (exchange adapters, broker plugins, gateway, execution and risk layers)
 
-- `backtrader` — framework maintenance, CI/CD, compatibility, documentation, and the AI-native workflow (MCP server, agent skills, web platform)
-- `bt_api_py` — multi-exchange standardized API SDK, with 64 exchange adapters and 14 broker plugins
-- `backtrader_web` — web-based strategy management and execution workflow
-- `fincore` — unified quantitative performance & risk analytics toolkit
+Recent active repositories: `opendata`, `backtrader`, `fincore`, `fincore_cpp`, `ai-for-investor`.
 
 ## Current Focus
 
-- Building production-friendly Python SDKs for quant workflows
+- Building production-friendly Python SDKs and services for quant workflows
+- Market-data infrastructure: multi-source ingestion, cross-source validation, and unified query services
 - Researching and refining trading strategies across multiple market styles
-- Exploring C++ / Rust / pybind / swig acceleration paths for quant infrastructure
-- Connecting research, backtesting, live trading, and data tooling into a unified workflow
+- C++ / Rust / pybind11 acceleration paths for quant infrastructure
+- Connecting research, backtesting, live execution and data tooling into a unified workflow
 - Making quant systems easier to use with MCP / AI-native interfaces
 
 ## Strategy Interests
 
-- Trend following
+- Trend following (CTA)
+- Multi-factor stock selection
 - Mean reversion
 - Momentum
-- Breakout strategies
-- Multi-factor stock selection
 - Statistical arbitrage
-- Market making
-- Arbitrage and spread trading
 - Event-driven strategies
+- Arbitrage and spread trading
+- Market making
 - High-frequency trading research
 
 ## Selected Projects
@@ -57,8 +58,9 @@ Recent active contribution areas include:
 
 **Core framework and platform**
 
-- [`backtrader`](https://github.com/cloudQuant/backtrader) — high-performance Python backtesting & live-trading framework: 45%+ faster than upstream, 50+ indicators, tick-to-daily strategies
-- [`backtrader_web`](https://github.com/cloudQuant/backtrader_web) — "AI for Investor" web platform (Vue 3 + FastAPI): research, AI strategy generation, backtesting, paper trading, live execution, and market-data management
+- [`backtrader`](https://github.com/cloudQuant/backtrader) — high-performance Python backtesting & live-trading framework: vectorized and event-driven modes, multi-timeframe data, 50+ indicators, and pybind11-accelerated C++ wheels
+- [`backtrader_cpp`](https://github.com/cloudQuant/backtrader_cpp) — C++ rewrite of the Backtrader engine
+- [`ai-for-investor`](https://github.com/cloudQuant/ai-for-investor) — AI-driven quantitative research platform (Vue 3 + FastAPI): knowledge-base Q&A, Backtrader strategy authoring and versioning, data-quality pre-checks, backtests with robustness and parameter optimization, paper trading, and portfolio risk monitoring — the successor to `backtrader_web`
 
 **AI-native workflow**
 
@@ -66,60 +68,47 @@ Recent active contribution areas include:
 - [`backtrader-skills`](https://github.com/cloudQuant/backtrader-skills) — offline author/review/test skills for AI coding agents (Claude Code, Codex, OpenCode)
 - [`backtrader-agent`](https://github.com/cloudQuant/backtrader-agent) — offline-first strategy-authoring agent runtime: StrategySpec validation, static review, hash-bound approvals
 
-**Performance rewrites and variants**
-
-- [`back_trader`](https://github.com/cloudQuant/back_trader) — the C++ version of backtrader *(private)*
-
 ### Fincore Ecosystem
 
 - [`fincore`](https://github.com/cloudQuant/fincore) — quantitative performance & risk analytics: 150+ financial metrics, portfolio optimization, Monte Carlo simulation, and attribution — the actively maintained successor to empyrical, pyfolio, and alphalens
 - [`fincore_cpp`](https://github.com/cloudQuant/fincore_cpp) — the C++ version of fincore
+- [`empyrical_cpp`](https://github.com/cloudQuant/empyrical_cpp) — header-only C++20 reimplementation of empyrical
+
+### Data Platform
+
+- [`opendata`](https://github.com/cloudQuant/opendata) — multi-source financial data middle platform: scheduled ingestion from AKShare, OpenBB and THS, standardized storage in MySQL / PostgreSQL / DolphinDB, cross-source data-quality validation, and REST + WebSocket query services (successor to `akshare_web`)
 
 ### bt_api Ecosystem
 
+One standardized API for market data, orders and account events across equities, futures, FX and digital-asset venues.
+
 **Core packages**
 
-- [`bt_api_py`](https://github.com/cloudQuant/bt_api_py) — Python SDK for multi-exchange integration with a standardized API
+- [`bt_api_py`](https://github.com/cloudQuant/bt_api_py) — Python SDK for multi-venue integration with a standardized API
 - [`bt_api_base`](https://github.com/cloudQuant/bt_api_base) — base package shared by all adapters
+- [`bt_api_gateway`](https://github.com/cloudQuant/bt_api_gateway) — middleware-neutral shared account gateway: market-data fan-out, account/order event routing, and strategy-scoped command delivery
+- [`bt_api_execution`](https://github.com/cloudQuant/bt_api_execution) — durable, provider-neutral execution and order-management layer: risk-gated, recoverable parent/child orders
+- [`bt_api_transport_zmq`](https://github.com/cloudQuant/bt_api_transport_zmq) — authenticated ZeroMQ transport primitives for bt_api gateways
+- [`bt_api_risk`](https://github.com/cloudQuant/bt_api_risk) — unified risk controls
+- [`bt_api_monitor`](https://github.com/cloudQuant/bt_api_monitor) — unified monitoring and metrics
+- [`bt_api_security`](https://github.com/cloudQuant/bt_api_security) — unified security and compliance controls
 - [`bt_api_cpp`](https://github.com/cloudQuant/bt_api_cpp) — the C++ version of bt_api
-- [`btapi`](https://github.com/cloudQuant/btapi) — C++ API library: sync/async requests, WebSocket, and FIX
-- [`bt_api_monitoring`](https://github.com/cloudQuant/bt_api_monitoring) — unified monitoring and metrics module
-- [`bt_api_risk`](https://github.com/cloudQuant/bt_api_risk) — unified risk controls module
-- [`bt_api_security`](https://github.com/cloudQuant/bt_api_security) — unified security controls and compliance module
+- [`btapi`](https://github.com/cloudQuant/btapi) — C++ API library: sync / async requests, WebSocket, and FIX
 
-**Exchange adapters (64)**
+**Broker plugins (14)** — live connectivity for Indian, US and European retail brokers: Zerodha, Upstox, Angel One, Fyers, Dhan, Kotak, IIFL, 5paisa, AliceBlue, Shoonya, Motilal, Groww, Tradier, Saxo.
 
-| | | | |
-| --- | --- | --- | --- |
-| [`bt_api_bequant`](https://github.com/cloudQuant/bt_api_bequant) | [`bt_api_bigone`](https://github.com/cloudQuant/bt_api_bigone) | [`bt_api_binance`](https://github.com/cloudQuant/bt_api_binance) | [`bt_api_bingx`](https://github.com/cloudQuant/bt_api_bingx) |
-| [`bt_api_bitbank`](https://github.com/cloudQuant/bt_api_bitbank) | [`bt_api_bitfinex`](https://github.com/cloudQuant/bt_api_bitfinex) | [`bt_api_bitflyer`](https://github.com/cloudQuant/bt_api_bitflyer) | [`bt_api_bitget`](https://github.com/cloudQuant/bt_api_bitget) |
-| [`bt_api_bithumb`](https://github.com/cloudQuant/bt_api_bithumb) | [`bt_api_bitinka`](https://github.com/cloudQuant/bt_api_bitinka) | [`bt_api_bitmart`](https://github.com/cloudQuant/bt_api_bitmart) | [`bt_api_bitrue`](https://github.com/cloudQuant/bt_api_bitrue) |
-| [`bt_api_bitso`](https://github.com/cloudQuant/bt_api_bitso) | [`bt_api_bitstamp`](https://github.com/cloudQuant/bt_api_bitstamp) | [`bt_api_bitunix`](https://github.com/cloudQuant/bt_api_bitunix) | [`bt_api_bitvavo`](https://github.com/cloudQuant/bt_api_bitvavo) |
-| [`bt_api_btbns`](https://github.com/cloudQuant/bt_api_btbns) | [`bt_api_btc_markets`](https://github.com/cloudQuant/bt_api_btc_markets) | [`bt_api_btcturk`](https://github.com/cloudQuant/bt_api_btcturk) | [`bt_api_buda`](https://github.com/cloudQuant/bt_api_buda) |
-| [`bt_api_bydfi`](https://github.com/cloudQuant/bt_api_bydfi) | [`bt_api_bybit`](https://github.com/cloudQuant/bt_api_bybit) | [`bt_api_coinbase`](https://github.com/cloudQuant/bt_api_coinbase) | [`bt_api_coincheck`](https://github.com/cloudQuant/bt_api_coincheck) |
-| [`bt_api_coindcx`](https://github.com/cloudQuant/bt_api_coindcx) | [`bt_api_coinex`](https://github.com/cloudQuant/bt_api_coinex) | [`bt_api_coinone`](https://github.com/cloudQuant/bt_api_coinone) | [`bt_api_coinspot`](https://github.com/cloudQuant/bt_api_coinspot) |
-| [`bt_api_coinswitch`](https://github.com/cloudQuant/bt_api_coinswitch) | [`bt_api_cryptocom`](https://github.com/cloudQuant/bt_api_cryptocom) | [`bt_api_ctp`](https://github.com/cloudQuant/bt_api_ctp) | [`bt_api_dydx`](https://github.com/cloudQuant/bt_api_dydx) |
-| [`bt_api_exmo`](https://github.com/cloudQuant/bt_api_exmo) | [`bt_api_foxbit`](https://github.com/cloudQuant/bt_api_foxbit) | [`bt_api_gateio`](https://github.com/cloudQuant/bt_api_gateio) | [`bt_api_gemini`](https://github.com/cloudQuant/bt_api_gemini) |
-| [`bt_api_giottus`](https://github.com/cloudQuant/bt_api_giottus) | [`bt_api_gmx`](https://github.com/cloudQuant/bt_api_gmx) | [`bt_api_hitbtc`](https://github.com/cloudQuant/bt_api_hitbtc) | [`bt_api_htx`](https://github.com/cloudQuant/bt_api_htx) |
-| [`bt_api_hyperliquid`](https://github.com/cloudQuant/bt_api_hyperliquid) | [`bt_api_ib_web`](https://github.com/cloudQuant/bt_api_ib_web) | [`bt_api_independent_reserve`](https://github.com/cloudQuant/bt_api_independent_reserve) | [`bt_api_korbit`](https://github.com/cloudQuant/bt_api_korbit) |
-| [`bt_api_kraken`](https://github.com/cloudQuant/bt_api_kraken) | [`bt_api_kucoin`](https://github.com/cloudQuant/bt_api_kucoin) | [`bt_api_latoken`](https://github.com/cloudQuant/bt_api_latoken) | [`bt_api_localbitcoins`](https://github.com/cloudQuant/bt_api_localbitcoins) |
-| [`bt_api_luno`](https://github.com/cloudQuant/bt_api_luno) | [`bt_api_mercado_bitcoin`](https://github.com/cloudQuant/bt_api_mercado_bitcoin) | [`bt_api_mexc`](https://github.com/cloudQuant/bt_api_mexc) | [`bt_api_mt5`](https://github.com/cloudQuant/bt_api_mt5) |
-| [`bt_api_okx`](https://github.com/cloudQuant/bt_api_okx) | [`bt_api_phemex`](https://github.com/cloudQuant/bt_api_phemex) | [`bt_api_poloniex`](https://github.com/cloudQuant/bt_api_poloniex) | [`bt_api_ripio`](https://github.com/cloudQuant/bt_api_ripio) |
-| [`bt_api_satoshitango`](https://github.com/cloudQuant/bt_api_satoshitango) | [`bt_api_swyftx`](https://github.com/cloudQuant/bt_api_swyftx) | [`bt_api_upbit`](https://github.com/cloudQuant/bt_api_upbit) | [`bt_api_valr`](https://github.com/cloudQuant/bt_api_valr) |
-| [`bt_api_wazirx`](https://github.com/cloudQuant/bt_api_wazirx) | [`bt_api_yobit`](https://github.com/cloudQuant/bt_api_yobit) | [`bt_api_zaif`](https://github.com/cloudQuant/bt_api_zaif) | [`bt_api_zebpay`](https://github.com/cloudQuant/bt_api_zebpay) |
-
-**Broker plugins (14)**
-
-[`bt_api_5paisa`](https://github.com/cloudQuant/bt_api_5paisa) · [`bt_api_aliceblue`](https://github.com/cloudQuant/bt_api_aliceblue) · [`bt_api_angelone`](https://github.com/cloudQuant/bt_api_angelone) · [`bt_api_dhan`](https://github.com/cloudQuant/bt_api_dhan) · [`bt_api_fyers`](https://github.com/cloudQuant/bt_api_fyers) · [`bt_api_groww`](https://github.com/cloudQuant/bt_api_groww) · [`bt_api_iifl`](https://github.com/cloudQuant/bt_api_iifl) · [`bt_api_kotak`](https://github.com/cloudQuant/bt_api_kotak) · [`bt_api_motilal`](https://github.com/cloudQuant/bt_api_motilal) · [`bt_api_saxo`](https://github.com/cloudQuant/bt_api_saxo) · [`bt_api_shoonya`](https://github.com/cloudQuant/bt_api_shoonya) · [`bt_api_tradier`](https://github.com/cloudQuant/bt_api_tradier) · [`bt_api_upstox`](https://github.com/cloudQuant/bt_api_upstox) · [`bt_api_zerodha`](https://github.com/cloudQuant/bt_api_zerodha)
+**Exchange adapters (64)** — including CTP for China futures, Interactive Brokers and MetaTrader 5, alongside major digital-asset venues such as Binance, OKX, Bybit, Coinbase and Kraken. The full registry lives in `bt_api_py`.
 
 ## Technical Interests
 
-- Python quant libraries
+- Python quant libraries and services
 - C++ strategy engines and bindings
 - Rust for performance-critical systems
-- Exchange and broker API integration
-- Factor research and portfolio analytics
-- Cross-platform automation and release engineering
+- Exchange / broker connectivity and market-data systems
+- Data warehousing (MySQL, PostgreSQL, DolphinDB)
+- Factor research, portfolio analytics and risk models
+- CI/CD, cross-platform packaging and release engineering
+- AI-native developer tooling (MCP, agent skills)
 
 ## Contact
 
@@ -133,50 +122,50 @@ If you're building something around quant research, trading systems, analytics i
 
 ## 中文版本
 
-我是 `cloudQuant`，一名专注于量化交易系统、研究工具、券商与交易所接口集成，以及 Python、C++、Rust、TypeScript 高性能工程实践的 `quant`。
+我是 `cloudQuant`，一名专注于系统化交易背后基础设施的量化工程师：高性能回测与分析、行情数据平台，以及多市场交易执行。以 Python 为主，在性能或工具链需要时使用 C++ / Rust / TypeScript。
 
 ## 关于我
 
 - 量化相关资质：`CFA`、`FRM`、`CIIA`、`CFP`
+- 主要市场覆盖：中国 A 股、国内期货，以及跨市场 / 多资产研究
 - 主要兴趣方向：
-  - 算法交易
-  - 交易策略与策略研究
+  - 算法交易与策略研究
   - 回测系统与策略工程
-  - 组合分析与因子研究
-  - 高性能系统
+  - 组合、因子与风险分析
+  - 行情数据工程与数据质量
+  - 高性能系统（C++ / Rust / pybind11）
   - AI 辅助研究与开发工具
 
 ## 近两年的主要工作方向
 
-近两年我在 GitHub 上的工作主要集中在三大项目生态：**backtrader** 交易框架及其 AI 原生工具链、**fincore** 分析库系列，以及 **bt_api** 多交易所 SDK 生态。
+近两年我在 GitHub 上的工作主要集中在四个项目生态：
 
-近期比较活跃的仓库方向包括：
+- `backtrader` — 性能优化的 Backtrader 分支（Python + C++）、其 Web 平台，以及 AI 原生策略开发工作流
+- `fincore` — 统一的量化绩效、风险与因子分析库
+- `opendata` — 多源金融数据中台（取数 → 数仓 → REST / WebSocket 服务）
+- `bt_api` — 标准化多市场交易 API 生态（交易所适配器、券商插件、网关、执行与风控层）
 
-- `backtrader` — 框架维护、CI/CD、兼容性、文档，以及 AI 原生工作流（MCP Server、Agent 技能、Web 平台）
-- `bt_api_py` — 多交易所统一接口 SDK，含 64 个交易所适配器与 14 个券商插件
-- `backtrader_web` — 基于 Web 的策略管理与执行平台
-- `fincore` — 统一的量化绩效与风险分析工具包
+近期活跃仓库：`opendata`、`backtrader`、`fincore`、`fincore_cpp`、`ai-for-investor`。
 
 ## 当前关注重点
 
-- 构建更适合生产环境的 Python 量化 SDK
-- 提升交易类库的跨平台可靠性与 CI/CD 质量
+- 构建更适合生产环境的 Python 量化 SDK 与服务
+- 行情数据基础设施：多源采集、跨源校验与统一查询服务
 - 研究和优化不同风格的交易策略
-- 探索 C++ / Rust / Cython 在量化基础设施中的加速路径
+- 探索 C++ / Rust / pybind11 在量化基础设施中的加速路径
 - 打通研究、回测、实盘执行和数据工具之间的完整工作流
 - 让量化系统更容易与 MCP / AI 原生接口结合
 
 ## 感兴趣的策略方向
 
-- 趋势跟踪
+- 趋势跟踪（CTA）
+- 多因子选股
 - 均值回归
 - 动量策略
-- 突破策略
-- 多因子选股
 - 统计套利
-- 做市策略
-- 套利与价差交易
 - 事件驱动策略
+- 套利与价差交易
+- 做市策略
 - 高频交易研究
 
 ## 代表项目
@@ -185,8 +174,9 @@ If you're building something around quant research, trading systems, analytics i
 
 核心框架与平台：
 
-- [`backtrader`](https://github.com/cloudQuant/backtrader) — 高性能 Python 回测与实盘框架：比上游快 45%+，50+ 指标，支持从 tick 到日线策略
-- [`backtrader_web`](https://github.com/cloudQuant/backtrader_web) — "AI for Investor" Web 平台（Vue 3 + FastAPI）：研究、AI 策略生成、回测、模拟盘、实盘执行与行情数据管理
+- [`backtrader`](https://github.com/cloudQuant/backtrader) — 高性能 Python 回测与实盘框架：向量化 / 事件驱动双模式、多周期数据、50+ 指标，并提供 pybind11 加速的 C++ wheel
+- [`backtrader_cpp`](https://github.com/cloudQuant/backtrader_cpp) — Backtrader 引擎的 C++ 重写
+- [`ai-for-investor`](https://github.com/cloudQuant/ai-for-investor) — AI 驱动的量化研究平台（Vue 3 + FastAPI）：知识库问答、Backtrader 策略编写与版本管理、数据质量预检、回测与稳健性 / 参数优化、模拟交易与组合风险观察 —— 后续替代 `backtrader_web`
 
 AI 原生工作流：
 
@@ -194,38 +184,47 @@ AI 原生工作流：
 - [`backtrader-skills`](https://github.com/cloudQuant/backtrader-skills) — 面向 AI 编程代理（Claude Code、Codex、OpenCode）的离线策略编写 / 审查 / 测试技能
 - [`backtrader-agent`](https://github.com/cloudQuant/backtrader-agent) — 离线优先的策略编写代理运行时：StrategySpec 校验、静态审查、哈希绑定审批
 
-性能重写与变体：
-
-- [`back_trader`](https://github.com/cloudQuant/back_trader) — C++ 版 *（私有）*
-
-
 ### Fincore 生态
 
 - [`fincore`](https://github.com/cloudQuant/fincore) — 量化绩效与风险分析：150+ 金融指标、组合优化、蒙特卡洛模拟与归因分析，是 empyrical / pyfolio / alphalens 的活跃维护后继
 - [`fincore_cpp`](https://github.com/cloudQuant/fincore_cpp) — C++ 版
+- [`empyrical_cpp`](https://github.com/cloudQuant/empyrical_cpp) — C++20 header-only 的 empyrical 重实现
+
+### 数据平台
+
+- [`opendata`](https://github.com/cloudQuant/opendata) — 多源金融数据中台：定时从 AKShare、OpenBB、同花顺等数据源采集，统一落库至 MySQL / PostgreSQL / DolphinDB，跨源校验数据质量，并以 REST + WebSocket 对外提供查询与订阅服务（前身为 `akshare_web`）
 
 ### bt_api 生态
 
+一套标准化 API，覆盖行情、订单与账户事件，连接股票、期货、外汇与数字资产等多类交易场所。
+
 核心包：
 
-- [`bt_api_py`](https://github.com/cloudQuant/bt_api_py) — 多交易所统一接口 Python SDK
+- [`bt_api_py`](https://github.com/cloudQuant/bt_api_py) — 多市场统一接口 Python SDK
 - [`bt_api_base`](https://github.com/cloudQuant/bt_api_base) — 适配器共享基础包
+- [`bt_api_gateway`](https://github.com/cloudQuant/bt_api_gateway) — 与中间件无关的统一账户网关：行情分发、账户 / 订单事件路由、按策略隔离的指令投递
+- [`bt_api_execution`](https://github.com/cloudQuant/bt_api_execution) — 持久化、与通道无关的执行与订单管理层：风控闸门下的父子订单聚合与恢复
+- [`bt_api_transport_zmq`](https://github.com/cloudQuant/bt_api_transport_zmq) — 带认证的 ZeroMQ 传输原语
+- [`bt_api_risk`](https://github.com/cloudQuant/bt_api_risk) — 统一风控模块
+- [`bt_api_monitor`](https://github.com/cloudQuant/bt_api_monitor) — 统一监控与指标模块
+- [`bt_api_security`](https://github.com/cloudQuant/bt_api_security) — 统一安全与合规模块
 - [`bt_api_cpp`](https://github.com/cloudQuant/bt_api_cpp) — C++ 版
 - [`btapi`](https://github.com/cloudQuant/btapi) — C++ API 库：同步 / 异步请求、WebSocket、FIX
-- [`bt_api_monitoring`](https://github.com/cloudQuant/bt_api_monitoring) — 统一监控与指标模块
-- [`bt_api_risk`](https://github.com/cloudQuant/bt_api_risk) — 统一风控模块
-- [`bt_api_security`](https://github.com/cloudQuant/bt_api_security) — 统一安全与合规模块
 
-64 个交易所适配器与 14 个券商插件的完整清单，见上方英文部分的 [bt_api Ecosystem](#bt_api-ecosystem)。
+**券商插件（14 个）**：面向印度、美国与欧洲零售券商的实盘接入，包括 Zerodha、Upstox、Angel One、Fyers、Dhan、Kotak、IIFL、5paisa、AliceBlue、Shoonya、Motilal、Groww、Tradier、Saxo。
+
+**交易所适配器（64 个）**：覆盖国内期货 CTP、Interactive Brokers、MetaTrader 5，以及 Binance、OKX、Bybit、Coinbase、Kraken 等数字资产交易场所。完整清单见 `bt_api_py` 的插件注册表。
 
 ## 技术兴趣
 
-- Python 量化库
+- Python 量化库与服务
 - C++ 策略引擎与绑定
 - Rust 高性能系统
-- 券商与交易所接口集成
-- 因子研究与组合分析
-- 跨平台自动化与发布工程
+- 券商与交易所接口集成、行情数据系统
+- 数据仓库（MySQL、PostgreSQL、DolphinDB）
+- 因子研究、组合分析与风险模型
+- CI/CD、跨平台打包与发布工程
+- AI 原生开发工具（MCP、Agent Skills）
 
 ## 联系方式
 
